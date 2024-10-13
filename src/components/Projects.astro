@@ -1,0 +1,51 @@
+---
+import { TECHNOLOGIES as T } from '@/consts.d'
+import type { Project } from '@/types.d'
+
+const projects: Project[] = [
+  {
+    name: 'Quizzie',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    images: [],
+    tecnologies: [T.JAVASCRIPT, T.REACT, T.NODE, T.MONGODB],
+    code: '',
+    preview: ''
+  },
+  {
+    name: 'IP Geolocation',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    images: [],
+    tecnologies: [T.JAVASCRIPT, T.REACT, T.LEAFLET],
+    code: '',
+    preview: ''
+  },
+  {
+    name: 'URL Shortener',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    images: [],
+    tecnologies: [T.JAVASCRIPT, T.REACT, T.NODE, T.MONGODB],
+    code: '',
+    preview: ''
+  },
+  {
+    name: 'Timeline Creator',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    images: [],
+    tecnologies: [T.TYPESCRIPT, T.REACT],
+    code: '',
+    preview: ''
+  }
+]
+---
+
+<div class='grid [grid-template-columns:3fr_1fr_3fr] gap-12'>
+  {
+    projects.map((_, i) => {
+      return (
+        <article
+          class={`h-[310px] bg-[#222] first:col-span-2 last:col-span-2 rounded-lg border border-[#444]`}
+        />
+      )
+    })
+  }
+</div>
