@@ -1,0 +1,22 @@
+---
+import { SOCIALS } from '@/consts.d'
+const slicedSocials = SOCIALS.slice(1)
+---
+
+<footer class='mb-12'>
+  <aside class='flex gap-8 items-center'>
+    <div class='flex gap-4'>
+      {
+        slicedSocials.map(({ icon: Icon, link }) => (
+          <a
+            href={link}
+            target='_blank'
+          >
+            <Icon class='size-8 text-white' />
+          </a>
+        ))
+      }
+    </div>
+    <span class='text-base text-white'>Cat Sprites by ???</span>
+  </aside>
+</footer>

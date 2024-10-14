@@ -19,14 +19,14 @@ export const SOCIALS = [
     icon: ResumeIcon
   },
   {
-    label: 'Github',
-    link: 'https://github.com/K3vnDev',
-    icon: GithubIcon
-  },
-  {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/kevinrdev/',
     icon: LinkedInIcon
+  },
+  {
+    label: 'Github',
+    link: 'https://github.com/K3vnDev',
+    icon: GithubIcon
   }
 ]
 
