@@ -1,0 +1,35 @@
+---
+const [image1, image2] = Astro.props.images
+---
+
+{
+  image2 ? (
+    <>
+      <img
+        src={image2}
+        alt=''
+        class='image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl'
+      />
+      <img
+        src={image1}
+        alt=''
+        class='image w-[240px] h-[200px] aligned-rb'
+      />
+    </>
+  ) : (
+    <img
+      src={image1}
+      alt=''
+      class='image w-[190px] h-[260px] aligned-rb'
+    />
+  )
+}
+
+<style>
+  .image {
+    @apply absolute object-cover outline outline-1 outline-[#333];
+  }
+  .aligned-rb {
+    @apply right-0 bottom-0 rounded-tl-xl rounded-br-xl;
+  }
+</style>
