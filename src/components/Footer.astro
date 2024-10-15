@@ -1,22 +1,29 @@
 ---
 import { SOCIALS } from '@/consts.d'
+import { Cat } from '@components/Cat.tsx'
+import Link from '@components/Link.astro'
 const slicedSocials = SOCIALS.slice(1)
 ---
 
-<footer class='mb-12'>
+<footer class='mb-12 flex justify-between gap-24 items-end'>
   <aside class='flex gap-8 items-center'>
     <div class='flex gap-4'>
       {
         slicedSocials.map(({ icon: Icon, link }) => (
-          <a
+          <Link
             href={link}
-            target='_blank'
+            class='border-none bg-transparent'
           >
             <Icon class='size-8 text-white' />
-          </a>
+          </Link>
         ))
       }
     </div>
-    <span class='text-base text-white'>Cat Sprites by ???</span>
+    <span class='text-sm font-light text-zinc-300 text-nowrap'>
+      Cat sprites taken from Stardew Valley
+    </span>
   </aside>
+  <div class='w-full relative'>
+    <Cat client:load />
+  </div>
 </footer>
