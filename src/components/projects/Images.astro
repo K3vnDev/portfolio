@@ -15,29 +15,29 @@ const alt = `Screenshot of the project ${name}`
     <>
       <img
         src={image2}
+        class='image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
         alt={alt}
-        class='image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl'
       />
       <img
         src={image1}
-        alt={alt}
         class='image w-[240px] h-[200px] aligned-rb'
+        alt={alt}
       />
     </>
   ) : (
     <img
       src={image1}
-      alt={alt}
       class='image w-[190px] h-[260px] aligned-rb'
+      alt={alt}
     />
   )
 }
 
 <style>
   .image {
-    @apply absolute object-cover outline outline-1 outline-[#333];
+    @apply absolute object-cover;
   }
   .aligned-rb {
-    @apply right-0 bottom-0 rounded-tl-xl rounded-br-xl;
+    @apply right-0 bottom-0 rounded-tl-xl border-t border-l border-[#333];
   }
 </style>

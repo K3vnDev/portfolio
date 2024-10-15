@@ -32,11 +32,11 @@ export const SOCIALS = [
 
 export const SECTIONS = {
   PROJECTS: {
-    label: 'Starred Projects',
+    label: 'Starred projects',
     icon: CodeIcon
   },
   ABOUT: {
-    label: 'About',
+    label: 'About me',
     icon: AboutIcon
   }
 }

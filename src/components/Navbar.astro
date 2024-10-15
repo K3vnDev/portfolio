@@ -63,7 +63,7 @@ const items = ['Projects', 'About', 'Contact']
   const callback = (entries: any[]) => {
     entries.forEach(entry => {
       const { id } = entry.target
-      if (!entry.isIntersecting || !id) return
+      if (!entry.isIntersecting) return
 
       buttons.forEach(button => {
         button.getAttribute('data-scroll-element') === id

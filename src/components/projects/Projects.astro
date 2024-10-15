@@ -10,7 +10,7 @@ import PreviewIcon from '@icons/Preview.astro'
 const projects: Project[] = [
   {
     name: 'Quizzie',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Easy-to-use quiz maker. Create your own quizzes and share them with others. You can also have fun playing existing ones, the answer is yours!',
     images: [
       './public/projects/quizzie-1.webp',
       './public/projects/quizzie-2.webp'
@@ -21,7 +21,7 @@ const projects: Project[] = [
   },
   {
     name: 'IP Geolocation',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'A website that tracks your IP address and displays it for you. It also includes a map and information about your estimated location.',
     images: ['./public/projects/ip-geolocation.webp'],
     tecnologies: [T.REACT, T.LEAFLET],
     code: 'https://github.com/K3vnDev/ip-geolocation',
@@ -29,7 +29,7 @@ const projects: Project[] = [
   },
   {
     name: 'URL Shortener',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Shorten long and annoying URLs easily. Save your favorite websites on the dashboard and access their shortened links anytime.',
     images: ['./public/projects/url-shortener.webp'],
     tecnologies: [T.REACT, T.NODE, T.MONGODB],
     code: 'https://github.com/K3vnDev/u-sh',
@@ -37,7 +37,7 @@ const projects: Project[] = [
   },
   {
     name: 'Timeline Creator',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Creating timelines has never been easier. Make and view as many timelines as you want with this simple yet versatile website.',
     images: [
       './public/projects/timeline-creator-1.webp',
       './public/projects/timeline-creator-2.webp'
@@ -49,15 +49,15 @@ const projects: Project[] = [
 ]
 ---
 
-<div class='grid [grid-template-columns:5fr_1fr_5fr] gap-10'>
+<div class='grid [grid-template-columns:5fr_1fr_5fr] gap-9'>
   {
     projects.map(({ name, desc, code, preview, images, tecnologies }) => (
       <article
-        class={`h-[310px] bg-[#222] relative first:col-span-2 last:col-span-2 rounded-xl border border-[#444] p-12`}
+        class={`h-auto min-h-[310px] bg-[#222] relative first:col-span-2 last:col-span-2 rounded-xl border-2 border-[#444] p-12 overflow-hidden`}
       >
-        <div class='w-[240px] flex flex-col h-full justify-between'>
+        <div class='w-[250px] flex flex-col h-full justify-between gap-4'>
           <section class='flex flex-col gap-2'>
-            <h5 class='text-2xl font-bold text-white'>{name}</h5>
+            <span class='text-2xl font-bold text-white'>{name}</span>
             <ul class='flex gap-1 flex-wrap'>
               {tecnologies.map(tecnology => (
                 <TechnologyBadge {...tecnology} />
@@ -67,14 +67,18 @@ const projects: Project[] = [
           </section>
 
           <section class='flex gap-2'>
-            <Button href={code}>
-              <GithubIcon />
-              Code
-            </Button>
-            <Button href={preview}>
-              <PreviewIcon />
-              Preview
-            </Button>
+            <Button
+              href={code}
+              projectName={name}
+              label='Code'
+              icon={GithubIcon}
+            />
+            <Button
+              href={preview}
+              projectName={name}
+              label='Preview'
+              icon={PreviewIcon}
+            />
           </section>
         </div>
 

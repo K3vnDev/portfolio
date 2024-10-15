@@ -15,10 +15,10 @@ import Projects from '@components/projects/Projects.astro'
 
 		<Section>
 			<h2 class='text-white text-8xl font-bold'>Hi, I’m Kevin</h2>
-			<h5 class='text-2xl font-normal text-white w-[730px] mt-4'>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua.
-			</h5>
+			<h3 class='text-2xl font-normal text-white w-[730px] mt-4'>
+				Software developer focused on <span>Web Development</span>. Specialized
+				on building versatile web aplications to the detail.
+			</h3>
 			<Socials />
 		</Section>
 
@@ -55,3 +55,10 @@ import Projects from '@components/projects/Projects.astro'
 		<Footer />
 	</main>
 </Layout>
+
+<style>
+	h3 > span {
+		background: linear-gradient(to right, #8e63f3, #5d6bff);
+		@apply bg-clip-text text-transparent font-extrabold;
+	}
+</style>

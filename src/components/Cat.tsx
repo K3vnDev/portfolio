@@ -1,9 +1,10 @@
+import { firstToUpper } from '@/utils/firstToUpper'
 import { randomRange } from '@/utils/randomRange'
 import { useEffect, useRef, useState } from 'react'
 
 type Mode = 'walk' | 'idle'
 
-const speed = 0.8
+const speed = 0.85
 
 const waitTimes = {
   walk: [5.5, 17],
@@ -80,9 +81,10 @@ export const Cat = () => {
   return (
     <img
       src={sprites}
-      alt={`Gif of a cat that is ${mode}`}
+      alt={`${firstToUpper(mode)} animation of a pixelated cat`}
       className={`
-        size-32 [image-rendering:pixelated] absolute bottom-0
+        size-40 [image-rendering:pixelated] absolute bottom-0 
+        saturate-50 brightness-[85%] select-none
         `}
       style={{ right: `${posX}px`, scale: `${-direction.current} 1` }}
       draggable={false}

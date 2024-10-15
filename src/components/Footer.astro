@@ -9,8 +9,9 @@ const slicedSocials = SOCIALS.slice(1)
   <aside class='flex gap-8 items-center'>
     <div class='flex gap-4'>
       {
-        slicedSocials.map(({ icon: Icon, link }) => (
+        slicedSocials.map(({ label, icon: Icon, link }) => (
           <Link
+            name={label}
             href={link}
             class='border-none bg-transparent'
           >
@@ -19,11 +20,19 @@ const slicedSocials = SOCIALS.slice(1)
         ))
       }
     </div>
-    <span class='text-sm font-light text-zinc-300 text-nowrap'>
-      Cat sprites taken from Stardew Valley
-    </span>
+    <small class='text-xs font-light text-zinc-400 text-nowrap'>
+      Cat sprites taken from
+      <a
+        class='text-zinc-200 hover:underline'
+        aria-label='Stardew Valley website'
+        href='https://www.stardewvalley.net'
+        target='_blank'
+      >
+        Stardew Valley
+      </a>
+    </small>
   </aside>
   <div class='w-full relative'>
-    <Cat client:load />
+    <Cat client:visible />
   </div>
 </footer>

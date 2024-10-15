@@ -1,12 +1,23 @@
 ---
 import Link from '@components/Link.astro'
 
-const { href } = Astro.props
+interface Props {
+  href: string
+  projectName: string
+  label: string
+
+  // biome-ignore lint/suspicious/noExplicitAny: <>
+  icon: (_props: Record<string, any>) => any
+}
+
+const { href, projectName, label, icon: Icon } = Astro.props
 ---
 
 <Link
   href={href}
+  name={`${label} of ${projectName}`}
   class='*:size-5 gap-2 px-4 py-2 text-sm font-semibold rounded-lg'
 >
-  <slot />
+  <Icon />
+  {label}
 </Link>
