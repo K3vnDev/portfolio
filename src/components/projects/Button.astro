@@ -1,11 +1,12 @@
 ---
+import Link from '@components/Link.astro'
+
 const { href } = Astro.props
 ---
 
-<a
+<Link
   href={href}
-  target='_blank'
-  class='bg-[#111] rounded-lg text-white text-sm font-semibold flex items-center gap-2 px-4 py-2 border border-[#444] *:size-5'
+  class='*:size-5 gap-2 px-4 py-2 text-sm font-semibold rounded-lg'
 >
   <slot />
-</a>
+</Link>

@@ -1,5 +1,13 @@
 ---
-const [image1, image2] = Astro.props.images
+interface Props {
+  name: string
+  images: string[]
+}
+
+const { images, name } = Astro.props
+const [image1, image2] = images
+
+const alt = `Screenshot of the project ${name}`
 ---
 
 {
@@ -7,19 +15,19 @@ const [image1, image2] = Astro.props.images
     <>
       <img
         src={image2}
-        alt=''
+        alt={alt}
         class='image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl'
       />
       <img
         src={image1}
-        alt=''
+        alt={alt}
         class='image w-[240px] h-[200px] aligned-rb'
       />
     </>
   ) : (
     <img
       src={image1}
-      alt=''
+      alt={alt}
       class='image w-[190px] h-[260px] aligned-rb'
     />
   )

@@ -15,7 +15,7 @@ import TypeScriptIcon from '@icons/TypeScript.astro'
 export const SOCIALS = [
   {
     label: 'Resume',
-    link: '/resume',
+    link: '/public/Curriculum.pdf',
     icon: ResumeIcon
   },
   {

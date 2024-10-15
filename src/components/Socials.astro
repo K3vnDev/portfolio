@@ -1,18 +1,18 @@
 ---
 import { SOCIALS } from '@/consts.d'
+import Link from './Link.astro'
 ---
 
-<div class='flex gap-4'>
+<div class='flex gap-4 mt-4'>
   {
-    SOCIALS.map(({ label, link: href, icon: Icon }) => (
-      <a
-        href={href}
-        target='_blank'
-        class='flex bg-[#111111] gap-3 px-6 py-2 rounded-full border-[#666666] border mt-6 items-center'
+    SOCIALS.map(({ label, link, icon: Icon }) => (
+      <Link
+        href={link}
+        class='gap-3 px-6 py-2 rounded-full'
       >
-        <Icon class='size-8 text-white' />
-        <span class='text-white text-2xl font-semibold'>{label}</span>
-      </a>
+        <Icon class='size-8' />
+        <span class='text-2xl font-semibold'>{label}</span>
+      </Link>
     ))
   }
 </div>
