@@ -5,8 +5,13 @@ import Link from '@components/Link.astro'
 const slicedSocials = SOCIALS.slice(1)
 ---
 
-<footer class='mb-12 flex justify-between gap-24 items-end'>
-  <aside class='flex gap-8 items-center'>
+<footer
+  class={`
+    mb-12 flex flex-col-reverse gap-5 
+    md:flex-row justify-between xl:gap-24 md:gap-12
+  `}
+>
+  <aside class='flex gap-8 items-center justify-between md:justify-start'>
     <div class='flex gap-4'>
       {
         slicedSocials.map(({ label, icon: Icon, link }) => (
@@ -15,12 +20,12 @@ const slicedSocials = SOCIALS.slice(1)
             href={link}
             class='border-none bg-transparent'
           >
-            <Icon class='size-8 text-white' />
+            <Icon class='md:size-8 size-6 text-white' />
           </Link>
         ))
       }
     </div>
-    <small class='text-xs font-light text-zinc-400 text-nowrap'>
+    <small class='text-xs font-light text-zinc-400 sm:text-nowrap'>
       Cat sprites taken from
       <a
         class='text-zinc-200 hover:underline'

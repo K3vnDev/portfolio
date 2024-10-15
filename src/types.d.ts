@@ -8,7 +8,7 @@ export type Tecnology = {
 export interface Project {
   name: string
   desc: string
-  images: string[]
+  big: boolean
   tecnologies: Tecnology[]
   code: string
   preview: string

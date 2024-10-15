@@ -1,41 +1,46 @@
 ---
 interface Props {
   name: string
-  images: string[]
+  big: boolean
 }
 
-const { images, name } = Astro.props
-const [image1, image2] = images
+const parseName = (name: string) => name.toLowerCase().replaceAll(' ', '-')
 
+const getSrc = (index: number) => {
+  const filename = parseName(name)
+  return `./public/projects/${filename}/${filename}-${index}.webp`
+}
+
+const { big, name } = Astro.props
 const alt = `Screenshot of the project ${name}`
+
+const mainImgSize = big ? 'w-[240px] h-[200px]' : 'w-[190px] h-[260px]'
 ---
 
 {
-  image2 ? (
-    <>
-      <img
-        src={image2}
-        class='image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
-        alt={alt}
-      />
-      <img
-        src={image1}
-        class='image w-[240px] h-[200px] aligned-rb'
-        alt={alt}
-      />
-    </>
-  ) : (
+  big && (
     <img
-      src={image1}
-      class='image w-[190px] h-[260px] aligned-rb'
+      src={getSrc(2)}
+      class='default-image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
       alt={alt}
     />
   )
 }
+<img
+  src={getSrc(1)}
+  class={`default-image aligned-rb ${mainImgSize}`}
+  alt={alt}
+/>
+
+<img
+  src={getSrc(Number(big) + 2)}
+  class='xl:hidden border border-[#333] md:h-64 h-56 sm:min-w-96 w-auto sm:w-96 rounded-xl shadow-lg object-cover'
+  alt={alt}
+/>
 
 <style>
-  .image {
-    @apply absolute object-cover;
+  .default-image {
+    @apply xl:block hidden absolute object-cover shadow-lg;
   }
   .aligned-rb {
     @apply right-0 bottom-0 rounded-tl-xl border-t border-l border-[#333];
