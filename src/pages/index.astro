@@ -9,7 +9,7 @@ import Title from '@components/Title.astro'
 import Projects from '@components/projects/Projects.astro'
 ---
 
-<Layout title='Portfolio - Kevin Rodriguez'>
+<Layout title="Kevin's Portfolio | Fullstack Developer">
 	<main
 		class='xl:max-w-[75rem] max-w-4xl md:mx-10 mx-8 xl:mt-[21rem] mt-48 flex flex-col md:gap-56 gap-44'
 	>
@@ -22,8 +22,10 @@ import Projects from '@components/projects/Projects.astro'
 			<h3
 				class='text-2xl sm:text-3xl font-normal text-white max-w-[730px] mt-4'
 			>
-				Software developer focused on <span>Web Development</span>. Specialized
-				on building versatile web apps to the detail.
+				Software developer focused on
+				<strong>Web Development</strong>. Specialized on building <strong
+					>enjoyable</strong
+				> web experiences.
 			</h3>
 			<Socials />
 		</Section>
@@ -43,17 +45,17 @@ import Projects from '@components/projects/Projects.astro'
 			<Title {...SECTIONS.ABOUT} />
 			<div class='text-xl font-light text-gray-200 flex flex-col gap-5'>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-					ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-					sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-					amet, consectetur adipiscing elit.
+					I'm Kevin Rodriguez, a 19-year-old eighth-semester student and <strong
+						>Fullstack Developer</strong
+					>.
 				</p>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-					ipsum dolor sit amet, consectetur adipiscing elit.
+					I've worked on a variety of projects, always focused on delivering
+					intuitive and engaging web applications to
+					<strong>deliver the best user experience</strong>. I aim to create
+					user-friendly, functional solutions that enhance the experience,
+					whether by simplifying complex processes or adding polish to the final
+					product.
 				</p>
 			</div>
 		</Section>
@@ -63,8 +65,11 @@ import Projects from '@components/projects/Projects.astro'
 </Layout>
 
 <style>
-	h3 > span {
+	h3 > strong {
 		background: linear-gradient(to right, #8e63f3, #5d6bff);
 		@apply bg-clip-text text-transparent font-extrabold;
+	}
+	p > strong {
+		@apply text-[#b49dff] font-medium;
 	}
 </style>
