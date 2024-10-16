@@ -3,7 +3,6 @@ interface Props {
 	title: string
 }
 
-const { FILES_PATH } = import.meta.env
 const { title } = Astro.props
 ---
 
@@ -21,7 +20,7 @@ const { title } = Astro.props
 		/>
 		<link
 			rel='shortcut icon'
-			href={`${FILES_PATH}/icon.svg`}
+			href='./icon.svg'
 			type='image/x-icon'
 		/>
 		<meta

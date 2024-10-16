@@ -4,12 +4,11 @@ interface Props {
   big: boolean
 }
 
-const { FILES_PATH } = import.meta.env
 const parseName = (name: string) => name.toLowerCase().replaceAll(' ', '-')
 
 const getSrc = (index: number) => {
   const filename = parseName(name)
-  return `${FILES_PATH}/projects/${filename}/${filename}-${index}.webp`
+  return `./projects/${filename}/${filename}-${index}.webp`
 }
 
 const { big, name } = Astro.props
