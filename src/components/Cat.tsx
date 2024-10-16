@@ -3,6 +3,7 @@ import { randomRange } from '@/utils/randomRange'
 import { useEffect, useRef, useState } from 'react'
 
 type Mode = 'walk' | 'idle'
+const { FILES_PATH } = import.meta.env
 
 const speed = 0.85
 
@@ -12,9 +13,9 @@ const waitTimes = {
 }
 
 const spritesheets = {
-  walk: './src/assets/cat/walk.gif',
-  idle: './src/assets/cat/idle.gif',
-  lick: './src/assets/cat/lick.gif'
+  walk: `${FILES_PATH}/cat/walk.gif`,
+  idle: `${FILES_PATH}/cat/idle.gif`,
+  lick: `${FILES_PATH}/cat/lick.gif`
 }
 
 const lickChance = 0.66
