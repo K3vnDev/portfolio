@@ -12,10 +12,12 @@ import NodeJSIcon from '@icons/NodeJS.astro'
 import ReactIcon from '@icons/React.astro'
 import TypeScriptIcon from '@icons/TypeScript.astro'
 
+const { FILES_PATH } = import.meta.env
+
 export const SOCIALS = [
   {
     label: 'Resume',
-    link: '/public/kevin-rodriguez_curriculum-en.pdf',
+    link: `${FILES_PATH}/kevin-rodriguez_curriculum-en.pdf`,
     icon: ResumeIcon
   },
   {
