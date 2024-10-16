@@ -8,7 +8,7 @@ const parseName = (name: string) => name.toLowerCase().replaceAll(' ', '-')
 
 const getSrc = (index: number) => {
   const filename = parseName(name)
-  return `./public/projects/${filename}/${filename}-${index}.webp`
+  return `./src/assets/projects/${filename}/${filename}-${index}.webp`
 }
 
 const { big, name } = Astro.props

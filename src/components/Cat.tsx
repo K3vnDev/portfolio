@@ -12,9 +12,9 @@ const waitTimes = {
 }
 
 const spritesheets = {
-  walk: '/public/cat/walk.gif',
-  idle: '/public/cat/idle.gif',
-  lick: '/public/cat/lick.gif'
+  walk: './src/assets/cat/walk.gif',
+  idle: './src/assets/cat/idle.gif',
+  lick: './src/assets/cat/lick.gif'
 }
 
 const lickChance = 0.66
