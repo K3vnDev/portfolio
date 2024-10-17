@@ -21,9 +21,9 @@ const lickChance = 0.66
 export const Cat = () => {
   const [mode, setMode] = useState<Mode>('walk')
   const [sprites, setSprites] = useState(spritesheets[mode])
-  const modeRef = useRef(mode)
   const [posX, setPosX] = useState(0)
 
+  const modeRef = useRef(mode)
   const ref = useRef(null)
   const playgroundWidth = useRef(0)
   const direction = useRef(1)
@@ -39,11 +39,15 @@ export const Cat = () => {
     }, wait)
   }
 
-  // Prevent cat from going out of bounds
-  useEffect(() => {
-    if (posX > playgroundWidth.current) direction.current = -1
-    else if (posX < 0) direction.current = 1
-  }, [posX])
+  const refreshPlaygroundWidth = () => {
+    if (!ref.current) return
+    const element = ref.current as HTMLElement
+    const parentElement = element.closest('div') as HTMLElement
+
+    const { width: parentWidth } = parentElement.getBoundingClientRect()
+    const { width: elementWidth } = element.getBoundingClientRect()
+    playgroundWidth.current = parentWidth - elementWidth
+  }
 
   const update = () => {
     if (modeRef.current === 'walk') {
@@ -51,8 +55,23 @@ export const Cat = () => {
     }
     window.requestAnimationFrame(update)
   }
-  useEffect(update, [])
 
+  // Prevent cat from going out of bounds
+  useEffect(() => {
+    if (posX > playgroundWidth.current) direction.current = -1
+    else if (posX < 0) direction.current = 1
+  }, [posX])
+
+  // Update and recalculate bounds on resize
+  useEffect(() => {
+    update()
+
+    window.addEventListener('resize', refreshPlaygroundWidth)
+    return () => window.removeEventListener('resize', refreshPlaygroundWidth)
+  }, [])
+  useEffect(refreshPlaygroundWidth, [ref.current])
+
+  // Toggle mode and set spritesheets
   useEffect(() => {
     waitAndToggleMode()
     modeRef.current = mode
@@ -65,17 +84,6 @@ export const Cat = () => {
         : spritesheets.walk
     )
   }, [mode])
-
-  // Get playground width, max x value
-  useEffect(() => {
-    if (!ref.current) return
-    const element = ref.current as HTMLElement
-    const parentElement = element.closest('div') as HTMLElement
-
-    const { width: parentWidth } = parentElement.getBoundingClientRect()
-    const { width: elementWidth } = element.getBoundingClientRect()
-    playgroundWidth.current = parentWidth - elementWidth
-  }, [ref.current])
 
   return (
     <img
