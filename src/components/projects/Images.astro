@@ -1,48 +1,45 @@
 ---
+import ImageLink from '@components/projects/ImageLink.astro'
+
 interface Props {
   name: string
+  projectUrl: string
   big: boolean
 }
 
-const parseName = (name: string) => name.toLowerCase().replaceAll(' ', '-')
+const { big, name, projectUrl } = Astro.props
 
-const getSrc = (index: number) => {
-  const filename = parseName(name)
-  return `./projects/${filename}/${filename}-${index}.webp`
+const imageProps = {
+  alt: `Screenshot of the project ${name}`,
+  href: projectUrl
 }
 
-const { big, name } = Astro.props
-const alt = `Screenshot of the project ${name}`
+const getSrc = (index: number) => {
+  const filename = name.toLowerCase().replaceAll(' ', '-')
+  return `./projects/${filename}/${filename}-${index}.webp`
+}
 
 const mainImgSize = big ? 'w-[240px] h-[200px]' : 'w-[190px] h-[260px]'
 ---
 
-{
+<!-- On Grid Images -->{
   big && (
-    <img
+    <ImageLink
       src={getSrc(2)}
       class='default-image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
-      alt={alt}
+      {...imageProps}
     />
   )
 }
-<img
+<ImageLink
   src={getSrc(1)}
   class={`default-image aligned-rb ${mainImgSize}`}
-  alt={alt}
+  {...imageProps}
 />
 
-<img
+<!-- On List Image -->
+<ImageLink
   src={getSrc(Number(big) + 2)}
-  class='xl:hidden border border-[#333] md:h-64 h-56 sm:min-w-96 w-auto sm:w-96 rounded-xl shadow-lg object-cover'
-  alt={alt}
+  class='xl:hidden border border-[#333] md:h-64 sm:min-h-56 h-52 max-w-96 sm:min-w-96 w-auto sm:w-96 rounded-xl shadow-lg'
+  {...imageProps}
 />
-
-<style>
-  .default-image {
-    @apply xl:block hidden absolute object-cover shadow-lg;
-  }
-  .aligned-rb {
-    @apply right-0 bottom-0 rounded-tl-xl border-t border-l border-[#333];
-  }
-</style>
