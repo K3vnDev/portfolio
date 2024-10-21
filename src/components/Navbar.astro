@@ -1,4 +1,5 @@
 ---
+import { VISIBLE_NAVBAR_TOP } from '@/consts.d'
 const items = ['Projects', 'About', 'Contact']
 ---
 
@@ -6,7 +7,7 @@ const items = ['Projects', 'About', 'Contact']
   class={`
     fixed left-1/2 -translate-x-1/2 flex gap-6 bg-black py-2 px-9
     rounded-full bg-opacity-40 backdrop-blur-sm z-30 border border-zinc-800 text-gray-400 
-    sm:py-3 sm:px-12 sm:gap-8
+    sm:py-3 sm:px-12 sm:gap-8 ${VISIBLE_NAVBAR_TOP}
     `}
   id='navbar'
 >
@@ -23,15 +24,21 @@ const items = ['Projects', 'About', 'Contact']
 </nav>
 
 <script>
+  import { EVENTS, VISIBLE_NAVBAR_TOP } from '@/consts.d'
+
   // add navigation on click to navbar items
   const buttons = [...document.querySelectorAll('#navbar button')]
 
   buttons.forEach(button => {
     const id = button.getAttribute('data-scroll-element')
-    if (id === 'contact') return
 
     button.addEventListener('click', e => {
       e.preventDefault()
+
+      if (id === 'contact') {
+        document.dispatchEvent(new CustomEvent(EVENTS.OPEN_CONTACT))
+        return
+      }
 
       const element = document.querySelector(`#${id}`)
       element?.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -50,15 +57,13 @@ const items = ['Projects', 'About', 'Contact']
     lastScroll = scrollY
 
     if (movementY < 0) {
-      navbar.classList.add(visibleTop)
+      navbar.classList.add(VISIBLE_NAVBAR_TOP)
       navbar.classList.remove('-top-20')
     } else {
-      navbar.classList.remove(visibleTop)
+      navbar.classList.remove(VISIBLE_NAVBAR_TOP)
       navbar.classList.add('-top-20')
     }
   })
-  const visibleTop = 'top-4'
-  navbar.classList.add(visibleTop)
 
   // highlight navbar items when its scroll element is visible
   const callback = (entries: any[]) => {

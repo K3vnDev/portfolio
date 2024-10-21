@@ -1,6 +1,7 @@
 ---
-import { SECTIONS, SOCIALS } from '@/consts.d'
+import { SECTIONS } from '@/consts.d'
 import Layout from '@/layouts/Layout.astro'
+import { ContactForm } from '@components/ContactForm'
 import Footer from '@components/Footer.astro'
 import Navbar from '@components/Navbar.astro'
 import Section from '@components/Section.astro'
@@ -64,6 +65,8 @@ import Projects from '@components/projects/Projects.astro'
 		</Section>
 
 		<Footer />
+
+		<ContactForm client:idle />
 	</main>
 </Layout>
 

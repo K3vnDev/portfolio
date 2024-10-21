@@ -16,10 +16,12 @@
         "useKeyWithClickEvents": "off",
         "useAltText": "off",
         "noSvgWithoutTitle": "off",
-        "noAutofocus": "off"
+        "noAutofocus": "off",
+        "noLabelWithoutControl": "off"
       },
       "suspicious": {
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noExplicitAny": "off"
       },
       "correctness": {
         "useExhaustiveDependencies": "off"

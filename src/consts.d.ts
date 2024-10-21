@@ -67,3 +67,9 @@ export const TECHNOLOGIES = {
     icon: LeafletIcon
   }
 }
+
+export const EVENTS = {
+  OPEN_CONTACT: 'opencontactform'
+}
+
+export const VISIBLE_NAVBAR_TOP = 'top-4'
