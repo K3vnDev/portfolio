@@ -13,3 +13,5 @@ export interface Project {
   code: string
   preview: string
 }
+
+export type MailState = 'initial' | 'sending' | 'sent' | 'error'
