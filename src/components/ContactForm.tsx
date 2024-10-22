@@ -3,6 +3,7 @@ import { useErrorMessage } from '@/hooks/useErrorMessage'
 import type { MailState } from '@/types.d'
 import { extractFormData } from '@/utils/extractFormData'
 import { firstToUpper } from '@/utils/firstToUpper'
+import { getAnimationClassName } from '@/utils/getAnimationClassName'
 import { getElementRef } from '@/utils/getElementRef'
 import { sendMail } from '@/utils/sendMail'
 import Check from '@icons/Check'
@@ -15,7 +16,7 @@ import { useEffect, useRef, useState } from 'react'
 export const ContactForm = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [mailState, setMailState] = useState<MailState>('initial')
-  const { errorMessage, setNewError } = useErrorMessage(4000)
+  const { isShowingError, setNewError, errorMessage } = useErrorMessage(4000)
 
   useEffect(() => {
     document.addEventListener(EVENTS.OPEN_CONTACT, open)
@@ -57,13 +58,13 @@ export const ContactForm = () => {
     error: <Cross />
   }
 
-  return isOpen ? (
+  return (
     <div
       onPointerDown={handleClick}
-      className='fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center h-screen w-screen bg-black/15 backdrop-blur-[4px]'
+      className={`fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center h-screen w-screen bg-black/15 backdrop-blur-[4px] ${getAnimationClassName.fadeInOut(isOpen)}`}
     >
       <form
-        className='flex flex-col items-center relative md:gap-y-5 gap-y-4 bg-zinc-900 border-2 border-zinc-800 rounded-xl p-7 pb-4 shadow-xl md:w-auto w-full max-w-[32rem] mx-12'
+        className={`flex-col items-center relative md:gap-y-5 gap-y-4 bg-zinc-900 border-2 border-zinc-800 rounded-xl p-7 pb-4 shadow-xl md:w-auto w-full max-w-[32rem] mx-12 ${getAnimationClassName.popInOut(isOpen)}`}
         onSubmit={handleSubmit}
       >
         <header className='text-white flex gap-2 items-center mb-2'>
@@ -86,15 +87,17 @@ export const ContactForm = () => {
           </span>
           {mailState !== 'initial' && icons[mailState]}
         </button>
-        {errorMessage && (
-          <span className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 text-red-400 text-lg [text-shadow:0_0_.5rem_black]'>
-            {errorMessage}
-          </span>
-        )}
+
+        <span
+          className={`
+            absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 text-red-400 text-lg 
+            [text-shadow:0_0_.5rem_black] ${getAnimationClassName.fadeInOut(isShowingError)}
+          `}
+        >
+          {errorMessage}
+        </span>
       </form>
     </div>
-  ) : (
-    <></>
   )
 }
 
