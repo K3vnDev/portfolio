@@ -68,47 +68,5 @@ const { title } = Astro.props
 		html {
 			scroll-behavior: smooth;
 		}
-
-		.fade-in-out-element {
-			opacity: 0;
-			display: none;
-
-			transition:
-				opacity 0.3s ease,
-				display 0.3s ease allow-discrete;
-
-			&.showing {
-				opacity: 1;
-				display: flex;
-
-				@starting-style {
-					opacity: 0;
-				}
-			}
-		}
-
-		.pop-in-out-element {
-			--min-scale: 0.9;
-
-			opacity: 0;
-			scale: var(--min-scale);
-			display: none;
-
-			transition:
-				opacity 0.3s ease,
-				scale 0.3s ease,
-				display 0.3s ease allow-discrete;
-
-			&.showing {
-				opacity: 1;
-				scale: 1;
-				display: flex;
-
-				@starting-style {
-					opacity: 0;
-					scale: var(--min-scale);
-				}
-			}
-		}
 	</style>
 </html>
