@@ -1,5 +1,5 @@
 ---
-import Image from '@components/projects/Image.astro'
+import Image from '@components/project/Image.astro'
 
 interface Props {
   name: string
@@ -10,8 +10,8 @@ interface Props {
 const { big, name, projectUrl } = Astro.props
 
 const imageProps = {
-  alt: `Screenshot of the project ${name}`,
   href: projectUrl,
+  name: name,
 }
 
 const getImageSourceAt = (index: number) => {

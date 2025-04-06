@@ -1,19 +1,27 @@
 ---
 interface Props {
   class?: string
-  alt: string
+  name: string
   src: string
+  href: string
 }
 
-const { class: className, ...imageProps } = Astro.props
+const { class: className, href, src, name } = Astro.props
 ---
 
-<div class={`overflow-hidden ${className}`}>
+<a
+  href={href}
+  aria-label=`Preview the project ${name}.`
+  class=`overflow-hidden ${className}`
+  rel='noopener noreferrer'
+  target='_blank'
+>
   <img
     class='object-cover h-full w-full transition-transform duration-300 group-hover:scale-[1.025]'
-    {...imageProps}
+    src={src}
+    alt=`Screenshot of the project ${name}.`
   />
-</div>
+</a>
 
 <style>
   .default-image {

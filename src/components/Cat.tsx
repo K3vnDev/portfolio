@@ -91,7 +91,7 @@ export const Cat = () => {
       alt={`${firstToUpper(mode)} animation of a pixelated cat`}
       className={`
         size-40 [image-rendering:pixelated] absolute bottom-0 
-        saturate-[15%] brightness-[85%] select-none hue-rotate-[210deg]
+        saturate-0 brightness-90 select-none
       `}
       style={{ right: `${posX}px`, scale: `${-direction.current} 1` }}
       draggable={false}

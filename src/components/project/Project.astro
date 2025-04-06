@@ -1,37 +1,34 @@
 ---
 import type { Project } from '@/types.d'
-import Button from '@components/projects/Button.astro'
-import Images from '@components/projects/Images.astro'
-import TechnologyBadge from '@components/projects/TechnologyBadge.astro'
-import GithubIcon from '@icons/Github.astro'
-import Link from '@components/Link.astro'
-import PreviewIcon from '@icons/Preview.astro'
+import Button from '@components/project/Button.astro'
+import Images from '@components/project/Images.astro'
+import TechnologyBadge from '@components/project/TechnologyBadge.astro'
+import { GithubIcon, PreviewIcon } from '@icons'
 
-type Props = Project
+type Props = Project & {
+  index: number
+}
 
-const { name, desc, tecnologies, code, preview, big } = Astro.props
+const { name, desc, tecnologies, code, preview, big, index } = Astro.props
 ---
 
 <article
   id='project'
-  class={`
+  tabindex='0'
+  role='link'
+  class=`
     xl:bg-[#2c2a2f]/50 flex relative overflow-hidden
     first:col-span-2 last:col-span-2 rounded-xl xl:border-2 xl:border-[#444] 
     xl:flex-row md:flex-row-reverse flex-col-reverse 
     xl:p-12 p-3 xl:min-h-[19.375rem] xl:gap-0 md:gap-8 gap-4
-    cursor-pointer hover:brightness-110 transition group
-  `}
+    hover:brightness-110 transition group
+  `
 >
-  <Link
-    href={preview}
-    name={name}
-    class='absolute size-full top-0 left-0 z-40 border-none bg-transparent'
-  />
   <div
-    class={`
+    class=`
       flex flex-col sm:h-full justify-between gap-3 
       xl:min-w-0 md:min-w-72 md:max-w-96 xl:w-64 md:gap-5 xl:p-0 md:py-6
-    `}
+    `
   >
     <section class='flex flex-col md:gap-3 xl:gap-2 gap-2'>
       <div class='flex md:flex-col xl:gap-2 md:gap-3 gap-x-4 gap-y-2 flex-wrap'>

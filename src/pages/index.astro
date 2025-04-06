@@ -7,7 +7,7 @@ import Navbar from '@components/Navbar.astro'
 import Section from '@components/Section.astro'
 import Socials from '@components/Socials.astro'
 import Title from '@components/Title.astro'
-import Project from '@components/projects/Project.astro'
+import Project from '@components/project/Project.astro'
 ---
 
 <Layout title="Kevin's Portfolio | Fullstack Developer">
@@ -41,7 +41,7 @@ import Project from '@components/projects/Project.astro'
 					flex flex-col gap-9 items-start
 				`}
       >
-        {PROJECTS.map((project) => <Project {...project} />)}
+        {PROJECTS.map((proj, i) => <Project {...proj} index={i} />)}
       </div>
     </Section>
 

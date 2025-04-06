@@ -6,12 +6,9 @@ import { firstToUpper } from '@/utils/firstToUpper'
 import { getElementRef } from '@/utils/getElementRef'
 import { sendMail } from '@/utils/sendMail'
 import { AnimatedToggable } from '@components/AnimatedToggable/AnimatedToggable'
-import Check from '@icons/Check'
-import Cross from '@icons/Cross'
-import Loading from '@icons/Loading'
-import MailIcon from '@icons/Mail'
 import * as EmailValidator from 'email-validator'
 import { useEffect, useRef, useState } from 'react'
+import { CheckIcon, CrossIcon, LoadingIcon, MailIcon } from './icons'
 
 export const ContactForm = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,9 +50,9 @@ export const ContactForm = () => {
   }
 
   const icons = {
-    sending: <Loading className='animate-spin' />,
-    sent: <Check />,
-    error: <Cross />
+    sending: <LoadingIcon className='animate-spin' />,
+    sent: <CheckIcon />,
+    error: <CrossIcon />
   }
 
   return (
