@@ -2,20 +2,20 @@
 import Link from '@components/Link.astro'
 
 interface Props {
-	href: string
-	projectName: string
-	label: string
-	icon: (_props: Record<string, any>) => any
+  href: string
+  projectName: string
+  label: string
+  icon: (_props: Record<string, any>) => any
 }
 
 const { href, projectName, label, icon: Icon } = Astro.props
 ---
 
 <Link
-	href={href}
-	name={`${label} of ${projectName}`}
-	class='*:size-5 gap-2 px-4 py-2 text-sm font-semibold rounded-lg'
+  href={href}
+  name={`${label} of ${projectName}`}
+  class='*:size-5 gap-2 px-4 py-2 text-sm font-semibold rounded-lg z-40'
 >
-	<Icon />
-	{label}
+  <Icon />
+  {label}
 </Link>

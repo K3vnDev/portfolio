@@ -26,14 +26,14 @@ const mainImgSize = big ? 'w-[240px] h-[200px]' : 'w-[190px] h-[260px]'
   big && (
     <Image
       src={getImageSourceAt(2)}
-      class='default-image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
+      class='default-image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333] z-0'
       {...imageProps}
     />
   )
 }
 <Image
   src={getImageSourceAt(1)}
-  class={`default-image aligned-rb ${mainImgSize}`}
+  class={`default-image aligned-rb ${mainImgSize} z-10`}
   {...imageProps}
 />
 

@@ -1,10 +1,10 @@
 ---
 import type { Project } from '@/types.d'
-import Link from '@components/Link.astro'
 import Button from '@components/projects/Button.astro'
 import Images from '@components/projects/Images.astro'
 import TechnologyBadge from '@components/projects/TechnologyBadge.astro'
 import GithubIcon from '@icons/Github.astro'
+import Link from '@components/Link.astro'
 import PreviewIcon from '@icons/Preview.astro'
 
 type Props = Project
@@ -19,10 +19,14 @@ const { name, desc, tecnologies, code, preview, big } = Astro.props
     first:col-span-2 last:col-span-2 rounded-xl xl:border-2 xl:border-[#444] 
     xl:flex-row md:flex-row-reverse flex-col-reverse 
     xl:p-12 p-3 xl:min-h-[19.375rem] xl:gap-0 md:gap-8 gap-4
-
-    cursor-pointer hover:brightness-110 transition
+    cursor-pointer hover:brightness-110 transition group
   `}
 >
+  <Link
+    href={preview}
+    name={name}
+    class='absolute size-full top-0 left-0 z-40 border-none bg-transparent'
+  />
   <div
     class={`
       flex flex-col sm:h-full justify-between gap-3 
@@ -34,7 +38,7 @@ const { name, desc, tecnologies, code, preview, big } = Astro.props
         <span class='[font-size:1.625rem] font-bold text-white text-nowrap'>
           {name}
         </span>
-        <ul class='flex gap-1 flex-nowrap'>
+        <ul class='flex gap-1 flex-nowrap items-center'>
           {tecnologies.map((tecnology) => <TechnologyBadge {...tecnology} />)}
         </ul>
       </div>

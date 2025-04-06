@@ -1,16 +1,18 @@
 import AboutIcon from '@icons/About.astro'
 import CodeIcon from '@icons/Code.astro'
-
 import GithubIcon from '@icons/Github.astro'
 import LinkedInIcon from '@icons/LinkedIn.astro'
 import ResumeIcon from '@icons/Resume.astro'
-
 import LeafletIcon from '@components/icons/Leaflet.astro'
 import JavaScriptIcon from '@icons/JavaScript.astro'
 import MongoDBIcon from '@icons/MongoDB.astro'
 import NodeJSIcon from '@icons/NodeJS.astro'
 import ReactIcon from '@icons/React.astro'
 import TypeScriptIcon from '@icons/TypeScript.astro'
+import SupabaseIcon from '@components/icons/Supabase.astro'
+import OpenAIIcon from '@components/icons/OpenAI.astro'
+import NextJSIcon from '@components/icons/NextJS.astro'
+
 import type { Project } from '@/types.d'
 
 export const SOCIALS = [
@@ -66,18 +68,38 @@ export const TECHNOLOGIES = {
   LEAFLET: {
     label: 'Leaflet',
     icon: LeafletIcon
+  },
+  SUPABASE: {
+    label: 'Supabase',
+    icon: SupabaseIcon
+  },
+  NEXTJS: {
+    label: 'Next.js',
+    icon: NextJSIcon
+  },
+  OPENAI: {
+    label: 'OpenAI',
+    icon: OpenAIIcon
   }
 }
 
 const T = TECHNOLOGIES
 export const PROJECTS: Project[] = [
   {
-    name: 'Quizzie',
-    desc: 'Easy-to-use quiz maker. Create your own quizzes and share them with others. You can also have fun playing existing ones, the answer is yours!',
+    name: 'Studymate',
+    desc: 'Enhance your learning with AI. Mate, your virtual assistant, will help you create, follow and complete personalized study plans.',
     big: true,
-    tecnologies: [T.REACT, T.NODE, T.MONGODB],
-    code: 'https://github.com/K3vnDev/quizzie',
-    preview: 'https://quizzie-wb.netlify.app'
+    tecnologies: [T.NEXTJS, T.SUPABASE, T.OPENAI],
+    code: 'https://github.com/K3vnDev/studymate',
+    preview: 'https://studymate-web.vercel.app/studyplan/9d1597b7-3d18-4135-b9a8-133cf38845dd'
+  },
+  {
+    name: 'Timeline Creator',
+    desc: 'Creating timelines has never been easier. Make and view as many timelines as you want with this simple yet versatile website.',
+    big: false,
+    tecnologies: [T.REACT, T.TYPESCRIPT],
+    code: 'https://github.com/K3vnDev/timeline-creator',
+    preview: 'https://timeline-creator.netlify.app'
   },
   {
     name: 'IP Geolocation',
@@ -87,21 +109,14 @@ export const PROJECTS: Project[] = [
     code: 'https://github.com/K3vnDev/ip-geolocation',
     preview: 'https://ip-geolocation-kevdev.netlify.app'
   },
+
   {
-    name: 'URL Shortener',
-    desc: 'Shorten long and annoying URLs easily. Save your favorite websites on the dashboard and access their shortened links anytime.',
-    big: false,
-    tecnologies: [T.REACT, T.NODE, T.MONGODB],
-    code: 'https://github.com/K3vnDev/u-sh',
-    preview: 'https://url-shortener-ljsf.onrender.com'
-  },
-  {
-    name: 'Timeline Creator',
-    desc: 'Creating timelines has never been easier. Make and view as many timelines as you want with this simple yet versatile website.',
+    name: 'Quizzie',
+    desc: 'Easy-to-use quiz maker. Create your own quizzes and share them with others. You can also have fun playing existing ones, the answer is yours!',
     big: true,
-    tecnologies: [T.REACT, T.TYPESCRIPT],
-    code: 'https://github.com/K3vnDev/timeline-creator',
-    preview: 'https://timeline-creator.netlify.app'
+    tecnologies: [T.REACT, T.NODE, T.MONGODB],
+    code: 'https://github.com/K3vnDev/quizzie',
+    preview: 'https://quizzie-wb.netlify.app'
   }
 ]
 
