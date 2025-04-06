@@ -8,7 +8,7 @@ I've worked on a variety of projects, always focused on delivering intuitive and
 ## Starred projects
 
 - [**Quizzie**](https://github.com/K3vnDev/quizzie)
-Easy-to-use quiz maker. *Create your own quizzes* and share them with others. You can also have fun playing existing ones, the answer is yours! 
+Easy-to-use quiz maker. *Create your own quizzes* and share them with others. You can also have fun playing existing ones, the answer is yours!
 
 - [**Timeline Creator**](https://github.com/K3vnDev/timeline-creator)
-*Creating timelines has never been easier*. Make and view as many timelines as you want with this simple yet versatile website. 
+*Creating timelines has never been easier*. Make and view as many timelines as you want with this simple yet versatile website.

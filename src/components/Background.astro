@@ -1,0 +1,20 @@
+<div
+  id='app-background'
+  class={`
+		fixed top-0 left-0 -z-50 h-screen w-full bg-neutral-950
+		bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
+	`}
+>
+  <div class='bg-violet-700/[.09] left-[12vw] top-[21vh]'></div>
+  <div class='bg-indigo-600/10 right-[19vw] top-[7vh]'></div>
+</div>
+
+<style is:global>
+  #app-background div {
+    @apply fixed rounded-full blur-3xl;
+
+    --size: 30vw;
+    width: var(--size);
+    height: var(--size);
+  }
+</style>

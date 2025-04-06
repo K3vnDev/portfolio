@@ -1,5 +1,5 @@
 ---
-import { SECTIONS } from '@/consts.d'
+import { PROJECTS, SECTIONS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { ContactForm } from '@components/ContactForm'
 import Footer from '@components/Footer.astro'
@@ -7,75 +7,95 @@ import Navbar from '@components/Navbar.astro'
 import Section from '@components/Section.astro'
 import Socials from '@components/Socials.astro'
 import Title from '@components/Title.astro'
-import Projects from '@components/projects/Projects.astro'
+import Project from '@components/projects/Project.astro'
 ---
 
 <Layout title="Kevin's Portfolio | Fullstack Developer">
-	<main
-		class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl sm:mx-10 mx-7 xl:mt-72 sm:mt-48 mt-40'
-	>
-		<Navbar />
+  <main
+    class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl sm:mx-10 mx-7 xl:mt-72 sm:mt-48 mt-40'
+  >
+    <Navbar />
 
-		<Section>
-			<h2
-				class='text-white text-6xl md:text-8xl sm:text-7xl font-bold text-nowrap flex flex-wrap gap-3 sm:mb-0 mb-1'
-			>
-				<span>Hi,</span>
-				<span>I’m Kevin</span>
-			</h2>
-			<h3
-				class='text-2xl sm:text-3xl font-normal text-white max-w-[730px] mt-4'
-			>
-				Software developer focused on
-				<strong>Web Development</strong>. Specialized on building <strong
-					>enjoyable</strong
-				> web experiences.
-			</h3>
-			<Socials />
-		</Section>
+    <Section id='home'>
+      <h2
+        class='text-white text-6xl md:text-8xl sm:text-7xl font-bold text-nowrap flex flex-wrap gap-3 sm:mb-0 mb-1'
+      >
+        <span>Hi,</span>
+        <span>I’m Kevin</span>
+      </h2>
+      <h3
+        class='text-2xl text-pretty sm:text-3xl font-normal text-white max-w-[730px] mt-4'
+      >
+        <strong>Fullstack Developer</strong> passionate about building intuitive,
+        responsive <strong>Web Applications</strong>.
+      </h3>
+      <Socials />
+    </Section>
 
-		<Section
-			class='gap-8'
-			id='projects'
-		>
-			<Title {...SECTIONS.PROJECTS} />
-			<Projects />
-		</Section>
+    <Section class='gap-8' id='projects'>
+      <Title {...SECTIONS.PROJECTS} />
 
-		<Section
-			class='gap-6'
-			id='about'
-		>
-			<Title {...SECTIONS.ABOUT} />
-			<div class='text-xl font-light text-gray-200 flex flex-col gap-5'>
-				<p>
-					I'm Kevin Rodriguez, a 19-year-old eighth-semester student and <strong
-						>Fullstack Developer</strong
-					>.
-				</p>
-				<p>
-					I've worked on a variety of projects, always focused on delivering
-					intuitive and engaging web applications to
-					<strong>deliver the best user experience</strong>. I aim to create
-					user-friendly, functional solutions that enhance the experience,
-					whether by simplifying complex processes or adding polish to the final
-					product.
-				</p>
-			</div>
-		</Section>
+      <div
+        class={`
+					xl:grid [grid-template-columns:5fr_1fr_5fr] 
+					flex flex-col gap-9 items-start
+				`}
+      >
+        {PROJECTS.map((project) => <Project {...project} />)}
+      </div>
+    </Section>
 
-		<Footer />
+    <Section class='gap-6' id='about'>
+      <Title {...SECTIONS.ABOUT} />
+      <div
+        class='text-xl font-light text-gray-200 flex flex-col gap-5 text-pretty'
+      >
+        <p>
+          I'm Kevin Rodriguez, a final-year Multimedia Engineering student and
+          <strong>Fullstack Developer</strong>.
+        </p>
+        <p>
+          I enjoy translating complex ideas into clear interfaces and am
+          currently focused on React, Next.js, and Supabase. I'm looking for
+          opportunities to grow and collaborate on impactful software.
+        </p>
+        <p>
+          I've worked on a variety of projects, always focused on delivering
+          intuitive and engaging
+          <strong>web applications</strong> to deliver the best user experience.
+        </p>
+      </div>
+    </Section>
 
-		<ContactForm client:idle />
-	</main>
+    <Footer />
+
+    <ContactForm client:idle />
+  </main>
 </Layout>
 
-<style>
-	h3 > strong {
-		background: linear-gradient(to right, #8e63f3, #5d6bff);
-		@apply bg-clip-text text-transparent font-extrabold;
-	}
-	p > strong {
-		@apply text-[#b49dff] font-medium;
-	}
+<style is:global>
+  #home h3 strong {
+    @apply bg-clip-text text-transparent font-extrabold 
+			bg-gradient-to-r from-[#8e63f3] to-[#5d6bff];
+  }
+  #about p strong {
+    @apply text-[#b09eec] font-medium italic;
+  }
+
+  @media (max-width: 1279px) {
+    #project {
+      &:nth-child(1) {
+        order: 1;
+      }
+      &:nth-child(2) {
+        order: 3;
+      }
+      &:nth-child(3) {
+        order: 4;
+      }
+      &:nth-child(4) {
+        order: 2;
+      }
+    }
+  }
 </style>

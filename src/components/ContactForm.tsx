@@ -1,4 +1,4 @@
-import { EVENTS } from '@/consts.d'
+import { EVENTS } from '@/consts'
 import { useErrorMessage } from '@/hooks/useErrorMessage'
 import type { MailState } from '@/types.d'
 import { extractFormData } from '@/utils/extractFormData'
@@ -66,7 +66,7 @@ export const ContactForm = () => {
     >
       <div
         onPointerDown={handleClick}
-        className='fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center h-screen w-screen bg-black/15 backdrop-blur-[4px]'
+        className='fixed z-50 top-0 left-0 flex justify-center items-center h-screen w-screen bg-black/50 backdrop-blur-[1px]'
       >
         <AnimatedToggable
           animation='pop'
@@ -74,7 +74,7 @@ export const ContactForm = () => {
           toggle={isOpen}
         >
           <form
-            className='flex-col items-center relative md:gap-y-5 gap-y-4 bg-zinc-900 border-2 border-zinc-800 rounded-xl p-7 pb-4 shadow-xl md:w-auto w-full max-w-[32rem] mx-12'
+            className='flex-col items-center relative md:gap-y-5 gap-y-4 bg-zinc-900 border-2 border-zinc-700 rounded-xl p-9 pb-4 shadow-xl md:w-auto w-full max-w-[32rem] mx-12'
             onSubmit={handleSubmit}
           >
             <header className='text-white flex gap-2 items-center mb-2'>
@@ -89,7 +89,7 @@ export const ContactForm = () => {
             <Input name='message' textarea mailState={mailState} />
 
             <button
-              className='bg-zinc-950 px-12 py-2 rounded-lg hover:brightness-150 active:scale-95 active:brightness-90 disabled:brightness-50 disabled:scale-100 transition mt-1 flex gap-2 items-center text-white'
+              className='bg-zinc-950 px-20 py-2 rounded-lg hover:brightness-150 active:scale-95 active:brightness-90 disabled:brightness-50 disabled:scale-100 transition mt-1 flex gap-2 items-center text-white'
               disabled={mailState === 'sending'}
             >
               <span className='text-xl *:size-8'>

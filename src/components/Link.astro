@@ -13,11 +13,12 @@ const propClass = Astro.props.class ?? ''
   href={href}
   target='_blank'
   aria-label={name}
+  rel='noopener noreferrer'
   class={`
-      bg-[--link-btn-bg] flex items-center text-white border border-[#444]
-      transition hover:brightness-150 active:scale-95 active:brightness-90
-      ${propClass}
-    `}
+    bg-[--link-btn-bg] flex items-center text-white border border-[#444]
+    transition hover:brightness-150 active:scale-95 active:brightness-90
+    ${propClass}
+  `}
 >
   <slot />
 </a>

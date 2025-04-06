@@ -1,5 +1,5 @@
 ---
-import { VISIBLE_NAVBAR_TOP } from '@/consts.d'
+import { VISIBLE_NAVBAR_TOP } from '@/consts'
 const items = ['Projects', 'About', 'Contact']
 ---
 
@@ -12,7 +12,7 @@ const items = ['Projects', 'About', 'Contact']
   id='navbar'
 >
   {
-    items.map(item => (
+    items.map((item) => (
       <button
         data-scroll-element={item.toLowerCase()}
         class='sm:text-lg text-base font-semibold hover:scale-105 active:scale-95 transition'
@@ -24,15 +24,15 @@ const items = ['Projects', 'About', 'Contact']
 </nav>
 
 <script>
-  import { EVENTS, VISIBLE_NAVBAR_TOP } from '@/consts.d'
+  import { EVENTS, VISIBLE_NAVBAR_TOP } from '@/consts'
 
   // add navigation on click to navbar items
   const buttons = [...document.querySelectorAll('#navbar button')]
 
-  buttons.forEach(button => {
+  buttons.forEach((button) => {
     const id = button.getAttribute('data-scroll-element')
 
-    button.addEventListener('click', e => {
+    button.addEventListener('click', (e) => {
       e.preventDefault()
 
       if (id === 'contact') {
@@ -67,11 +67,11 @@ const items = ['Projects', 'About', 'Contact']
 
   // highlight navbar items when its scroll element is visible
   const callback = (entries: any[]) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       const { id } = entry.target
       if (!entry.isIntersecting) return
 
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         button.getAttribute('data-scroll-element') === id
           ? button.classList.add('text-white')
           : button.classList.remove('text-white')
@@ -82,11 +82,11 @@ const items = ['Projects', 'About', 'Contact']
   const observer = new IntersectionObserver(callback, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.6
+    threshold: 0.6,
   })
 
   const sections = [...document.querySelectorAll('main > section')]
-  sections.forEach(section => observer.observe(section))
+  sections.forEach((section) => observer.observe(section))
 </script>
 
 <style>

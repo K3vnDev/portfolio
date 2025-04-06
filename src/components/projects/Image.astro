@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string
+  alt: string
+  src: string
+}
+
+const { class: className, ...imageProps } = Astro.props
+---
+
+<div class={`overflow-hidden ${className}`}>
+  <img class='object-cover h-full w-full' {...imageProps} />
+</div>
+
+<style>
+  .default-image {
+    @apply xl:block hidden absolute shadow-lg;
+  }
+  .aligned-rb {
+    @apply right-0 bottom-0 rounded-tl-xl border-t border-l border-[#333];
+  }
+
+  img {
+    transition: scale 0.33s ease;
+    &:hover {
+      scale: 1.025;
+    }
+  }
+</style>

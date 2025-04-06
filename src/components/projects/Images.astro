@@ -1,5 +1,5 @@
 ---
-import ImageLink from '@components/projects/ImageLink.astro'
+import Image from '@components/projects/Image.astro'
 
 interface Props {
   name: string
@@ -11,10 +11,10 @@ const { big, name, projectUrl } = Astro.props
 
 const imageProps = {
   alt: `Screenshot of the project ${name}`,
-  href: projectUrl
+  href: projectUrl,
 }
 
-const getSrc = (index: number) => {
+const getImageSourceAt = (index: number) => {
   const filename = name.toLowerCase().replaceAll(' ', '-')
   return `./projects/${filename}/${filename}-${index}.webp`
 }
@@ -24,22 +24,22 @@ const mainImgSize = big ? 'w-[240px] h-[200px]' : 'w-[190px] h-[260px]'
 
 <!-- On Grid Images -->{
   big && (
-    <ImageLink
-      src={getSrc(2)}
+    <Image
+      src={getImageSourceAt(2)}
       class='default-image right-[75px] bottom-[60px] w-[250px] h-[200px] rounded-xl border border-[#333]'
       {...imageProps}
     />
   )
 }
-<ImageLink
-  src={getSrc(1)}
+<Image
+  src={getImageSourceAt(1)}
   class={`default-image aligned-rb ${mainImgSize}`}
   {...imageProps}
 />
 
 <!-- On List Image -->
-<ImageLink
-  src={getSrc(Number(big) + 2)}
+<Image
+  src={getImageSourceAt(Number(big) + 2)}
   class='xl:hidden border border-[#333] md:h-64 sm:min-h-56 h-52 max-w-96 sm:min-w-96 w-auto sm:w-96 rounded-xl shadow-lg'
   {...imageProps}
 />
