@@ -12,7 +12,7 @@ import Project from '@components/project/Project.astro'
 
 <Layout title="Kevin's Portfolio | Fullstack Developer">
   <main
-    class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl sm:mx-10 mx-7 xl:mt-72 sm:mt-48 mt-40'
+    class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl w-full sm:mx-10 mx-7 xl:mt-72 sm:mt-48 mt-40'
   >
     <Navbar />
 
@@ -26,8 +26,8 @@ import Project from '@components/project/Project.astro'
       <h3
         class='text-2xl text-pretty sm:text-3xl font-normal text-white max-w-[730px] mt-4'
       >
-        <strong>Fullstack Developer</strong> passionate about building intuitive,
-        responsive <strong>Web Applications</strong>.
+        <strong>Fullstack Developer</strong> focused on building responsive, clean,
+        and maintainable <strong>Web Applications</strong>.
       </h3>
       <Socials />
     </Section>
@@ -48,21 +48,20 @@ import Project from '@components/project/Project.astro'
     <Section class='gap-6' id='about'>
       <Title {...SECTIONS.ABOUT} />
       <div
-        class='text-xl font-light text-gray-200 flex flex-col gap-5 text-pretty'
+        class='text-xl font-light text-gray-200 flex flex-col gap-5 text-pretty max-w-4xl'
       >
         <p>
-          I'm Kevin Rodriguez, a final-year Multimedia Engineering student and
-          <strong>Fullstack Developer</strong>.
+          I'm Kevin Rodriguez, a final-year engineering student and <strong
+            >Fullstack Developer</strong
+          > focused on building intuitive, responsive, and engaging <strong
+            >web applications</strong
+          > that prioritize clean design and a seamless user experience.
         </p>
         <p>
-          I enjoy translating complex ideas into clear interfaces and am
-          currently focused on React, Next.js, and Supabase. I'm looking for
-          opportunities to grow and collaborate on impactful software.
-        </p>
-        <p>
-          I've worked on a variety of projects, always focused on delivering
-          intuitive and engaging
-          <strong>web applications</strong> to deliver the best user experience.
+          I use Git for version control and organize my workflow with Notion and <a
+            href='https://github.com/K3vnDev/listify'
+            target='_blank'>a custom task manager I built</a
+          > for smaller projects. I also build videogames.
         </p>
       </div>
     </Section>
@@ -78,8 +77,13 @@ import Project from '@components/project/Project.astro'
     @apply bg-clip-text text-transparent font-extrabold 
 			bg-gradient-to-r from-[#8e63f3] to-[#5d6bff];
   }
-  #about p strong {
-    @apply text-[#b09eec] font-medium italic;
+  #about p {
+    strong {
+      @apply bg-clip-text text-transparent bg-gradient-to-l from-[#9998fd] to-[#b09eec] font-semibold;
+    }
+    a {
+      @apply text-white hover:underline;
+    }
   }
 
   @media (max-width: 1279px) {
