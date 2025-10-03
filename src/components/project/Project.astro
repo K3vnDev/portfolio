@@ -9,7 +9,7 @@ type Props = Project & {
   index: number
 }
 
-const { name, desc, tecnologies, code, preview, big } = Astro.props
+const { name, desc, tecnologies, code, preview, big, gif } = Astro.props
 ---
 
 <article
@@ -53,5 +53,5 @@ const { name, desc, tecnologies, code, preview, big } = Astro.props
     </section>
   </div>
 
-  <Images name={name} big={big} projectUrl={preview} />
+  <Images {...{ name, big, gif }} projectUrl={preview} />
 </article>
