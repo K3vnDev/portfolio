@@ -9,7 +9,7 @@ type Props = Project & {
   index: number
 }
 
-const { name, desc, tecnologies, code, preview, big, index } = Astro.props
+const { name, desc, tecnologies, code, preview, big } = Astro.props
 ---
 
 <article
@@ -17,9 +17,9 @@ const { name, desc, tecnologies, code, preview, big, index } = Astro.props
   tabindex='0'
   role='link'
   class=`
-    xl:bg-[#2c2a2f]/50 flex relative overflow-hidden
-    first:col-span-2 last:col-span-2 rounded-xl xl:border-2 xl:border-[#444] 
-    xl:flex-row md:flex-row-reverse flex-col-reverse 
+    xl:bg-white/[.045] xl:border-2 border-[#555]/50 
+    relative overflow-hidden first:col-span-2 last:col-span-2 rounded-xl 
+    flex xl:flex-row md:flex-row-reverse flex-col-reverse 
     xl:p-12 p-3 xl:min-h-[19.375rem] xl:gap-0 md:gap-8 gap-4
     hover:brightness-110 transition group
   `
