@@ -1,16 +1,23 @@
-# [My Personal Portfolio](https://portfolio-kevndev.netlify.app)
+## 💻 [My Personal Portfolio](https://portfolio-kevndev.netlify.app)
 
-**Fullstack Developer** passionate about building *intuitive, responsive *Web Applications*.
+**Fullstack Developer** building responsive, fast, and maintainable
+**Web Applications**.
 
-I enjoy translating complex ideas into clear interfaces and am currently focused on React, Next.js, and Supabase. I'm looking for opportunities to grow and collaborate on impactful software.
-
-I've worked on a variety of projects, always focused on delivering intuitive and engaging web applications to *deliver the best user experience*.
+- Fullstack Developer with 2 years of experience shipping projects from concept to production.  
+- I specialize in building responsive, fast, and scalable web applications that people enjoy using.
+- Known for strong attention to detail and problem-solving, I adapt quickly across the stack to deliver clean, reliable products and innovative solutions.
   
 
 ## Starred projects
 
-- [**Studymate**](https://github.com/K3vnDev/studymate)
+- [**Pixi Paint**](https://github.com/K3vnDev/pixi-paint)
+  Create tiny masterpieces in a retro 8×8 pixel-art style. *Paint*, *share*, and even *play minigames*. All inside this handcrafted web platform.
+
+  ![A screenshot of Pixi Paint, showing a pixelated canvas with a duck painting](/public/projects/pixi-paint/3.webp)
+
+
+- [**Studymate**](https://github.com/K3vnDev/pixi-paint)
 *Enhance your learning with AI*. Mate, your *virtual assistant*, will help you create, follow and complete personalized study plans.
 
-- [**Quizzie**](https://github.com/K3vnDev/quizzie)
-Easy-to-use quiz maker. *Create your own quizzes* and share them with others. You can also have fun playing existing ones, the answer is yours!
+  ![A screenshot of Studymate, showing the app's dashboard with recommended study plans and a greeting from the virtual assistant](/public/projects/studymate/3.webp)
+
