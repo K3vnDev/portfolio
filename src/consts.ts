@@ -110,4 +110,7 @@ export const EVENTS = {
   OPEN_CONTACT: 'opencontactform'
 }
 
-export const VISIBLE_NAVBAR_TOP = 'top-4'
+export const NAVBAR_TOP = {
+  VISIBLE: 'top-4',
+  HIDDEN: '-top-20'
+} as const

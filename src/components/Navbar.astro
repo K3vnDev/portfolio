@@ -1,14 +1,14 @@
 ---
-import { VISIBLE_NAVBAR_TOP } from '@/consts'
+import { NAVBAR_TOP } from '@/consts'
 const items = ['Projects', 'About', 'Contact']
 ---
 
 <nav
   class={`
-    fixed left-1/2 -translate-x-1/2 flex gap-6 bg-black py-2 px-9
-    rounded-full bg-opacity-40 backdrop-blur-sm z-[999] border border-zinc-800 text-gray-400 
-    sm:py-3 sm:px-12 sm:gap-8 ${VISIBLE_NAVBAR_TOP}
-    `}
+    fixed left-1/2 -translate-x-1/2 flex gap-6 bg-black/40 py-2 px-9
+    rounded-full backdrop-blur-md z-[999] border border-zinc-700 text-gray-400 
+    sm:py-3 sm:px-12 sm:gap-8 [transition:top_400ms_ease] ${NAVBAR_TOP.VISIBLE}
+  `}
   id='navbar'
 >
   {
@@ -24,9 +24,9 @@ const items = ['Projects', 'About', 'Contact']
 </nav>
 
 <script>
-  import { EVENTS, VISIBLE_NAVBAR_TOP } from '@/consts'
+  import { EVENTS, NAVBAR_TOP } from '@/consts'
 
-  // add navigation on click to navbar items
+  // Add navigation on click to navbar items
   const buttons = [...document.querySelectorAll('#navbar button')]
 
   buttons.forEach((button) => {
@@ -45,27 +45,49 @@ const items = ['Projects', 'About', 'Contact']
     })
   })
 
-  // hide navbar when scrolling down
+  // Hide navbar when scrolling
   const navbar = document.querySelector('#navbar') as HTMLElement
 
+  let timeout: ReturnType<typeof setTimeout> | null = null
   let lastScroll = 0
+
+  const stopTimeout = () => {
+    timeout && clearTimeout(timeout)
+    timeout = null
+  }
+
+  const showNavbar = () => {
+    navbar.classList.remove(NAVBAR_TOP.HIDDEN)
+    navbar.classList.add(NAVBAR_TOP.VISIBLE)
+  }
+
+  const hideNavbar = () => {
+    navbar.classList.add(NAVBAR_TOP.HIDDEN)
+    navbar.classList.remove(NAVBAR_TOP.VISIBLE)
+  }
 
   document.addEventListener('scroll', () => {
     const { scrollY } = window
-
     const movementY = scrollY - lastScroll
     lastScroll = scrollY
 
+    stopTimeout()
+
     if (movementY < 0) {
-      navbar.classList.add(VISIBLE_NAVBAR_TOP)
-      navbar.classList.remove('-top-20')
+      // Just show navbar
+      showNavbar()
     } else {
-      navbar.classList.remove(VISIBLE_NAVBAR_TOP)
-      navbar.classList.add('-top-20')
+      // Hide navbar and show again after a certain time
+      hideNavbar()
+
+      timeout = setTimeout(() => {
+        showNavbar()
+        stopTimeout()
+      }, 500)
     }
   })
 
-  // highlight navbar items when its scroll element is visible
+  // Highlight navbar items when its scroll element is visible
   const callback = (entries: any[]) => {
     entries.forEach((entry) => {
       const { id } = entry.target
@@ -88,9 +110,3 @@ const items = ['Projects', 'About', 'Contact']
   const sections = [...document.querySelectorAll('main > section')]
   sections.forEach((section) => observer.observe(section))
 </script>
-
-<style>
-  #navbar {
-    transition: top 0.3s ease;
-  }
-</style>

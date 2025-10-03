@@ -13,7 +13,7 @@ import { Input } from './Input'
 export const ContactForm = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [mailState, setMailState] = useState<MailState>('initial')
-  const { isShowingError, setNewError, errorMessage } = useErrorMessage(4000)
+  const { isShowingError, setNewError, errorMessage, hideError } = useErrorMessage(4000)
 
   useEffect(() => {
     document.addEventListener(EVENTS.OPEN_CONTACT, open)
@@ -24,7 +24,10 @@ export const ContactForm = () => {
     setIsOpen(false)
     setMailState('initial')
   }
-  const open = () => setIsOpen(true)
+  const open = () => {
+    hideError()
+    setIsOpen(true)
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(e.target as HTMLFormElement)
@@ -71,8 +74,8 @@ export const ContactForm = () => {
           className={`
             fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-top-left z-[99999]
             flex-col items-center md:gap-y-5 gap-y-4 bg-zinc-950/75 border-2
-            border-zinc-800 rounded-xl p-9 pb-4 shadow-xl md:w-auto w-full max-w-[32rem]
-            backdrop-blur-xl
+            border-zinc-800 rounded-xl p-9 pb-4 shadow-xl
+            md:w-auto w-[calc(100vw-20px)] max-w-[32rem] backdrop-blur-xl
           `}
           onSubmit={handleSubmit}
         >
@@ -102,8 +105,14 @@ export const ContactForm = () => {
             {mailState !== 'initial' && icons[mailState]}
           </button>
 
+          {/* Error message */}
           <AnimatedToggable animation='fade' toggle={isShowingError} refresh={[errorMessage]}>
-            <span className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 text-red-400 text-lg [text-shadow:0_0_.5rem_black]'>
+            <span
+              className={`
+                absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 
+                text-red-400 text-lg [text-shadow:0_0_3rem_black]
+              `}
+            >
               {errorMessage}
             </span>
           </AnimatedToggable>
@@ -120,7 +129,7 @@ export const ContactForm = () => {
           onPointerDown={handleClick}
           className={`
             fixed z-[9999] top-0 left-0
-            h-dvh w-screen bg-black/50 backdrop-blur-sm
+            h-dvh w-screen bg-black/35 backdrop-blur-sm
           `}
         />
       </AnimatedToggable>
