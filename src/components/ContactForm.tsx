@@ -46,7 +46,11 @@ export const ContactForm = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
-    !(e.target as HTMLElement).closest('form') ? close() : undefined
+    console.log('click')
+
+    if (!(e.target as HTMLElement).closest('form')) {
+      close()
+    }
   }
 
   const icons = {
@@ -56,54 +60,71 @@ export const ContactForm = () => {
   }
 
   return (
-    <AnimatedToggable
-      animation='fade'
-      refresh={[isShowingError, errorMessage, mailState]}
-      toggle={isOpen}
-    >
-      <div
-        onPointerDown={handleClick}
-        className='fixed z-50 top-0 left-0 flex justify-center items-center h-screen w-screen bg-black/50 backdrop-blur-[1px]'
+    <>
+      {/* Dialog menu */}
+      <AnimatedToggable
+        animation='pop'
+        refresh={[isShowingError, errorMessage, mailState]}
+        toggle={isOpen}
       >
-        <AnimatedToggable
-          animation='pop'
-          refresh={[isShowingError, errorMessage, mailState]}
-          toggle={isOpen}
+        <form
+          className={`
+            fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-top-left z-[99999]
+            flex-col items-center md:gap-y-5 gap-y-4 bg-zinc-950/75 border-2
+            border-zinc-800 rounded-xl p-9 pb-4 shadow-xl md:w-auto w-full max-w-[32rem]
+            backdrop-blur-xl
+          `}
+          onSubmit={handleSubmit}
         >
-          <form
-            className='flex-col items-center relative md:gap-y-5 gap-y-4 bg-zinc-900 border-2 border-zinc-700 rounded-xl p-9 pb-4 shadow-xl md:w-auto w-full max-w-[32rem] mx-12'
-            onSubmit={handleSubmit}
+          <header className='text-white flex gap-2 items-center mb-2'>
+            <MailIcon className='sm:size-7 size-6' />
+            <span className='sm:text-2xl text-xl font-semibold'>Contact</span>
+          </header>
+
+          <div className='flex md:flex-row md:justify-between flex-col gap-x-7 md:gap-y-5 gap-y-4 max-w-full w-full'>
+            <Input name='name' mailState={mailState} />
+            <Input name='email' mailState={mailState} />
+          </div>
+          <Input name='message' textarea mailState={mailState} />
+
+          <button
+            className={`
+              bg-black px-20 py-2 rounded-lg hover:brightness-150 active:scale-95
+              active:brightness-90 disabled:brightness-50 disabled:scale-100 
+              transition mt-1 flex gap-2 items-center text-white
+              border border-zinc-800
+              `}
+            disabled={mailState === 'sending'}
           >
-            <header className='text-white flex gap-2 items-center mb-2'>
-              <MailIcon className='sm:size-7 size-6' />
-              <span className='sm:text-2xl text-xl font-semibold'>Conctact me</span>
-            </header>
+            <span className='text-xl *:size-8'>
+              {mailState === 'initial' ? 'Send' : firstToUpper(mailState)}
+            </span>
+            {mailState !== 'initial' && icons[mailState]}
+          </button>
 
-            <div className='flex md:flex-row md:justify-between flex-col gap-x-7 md:gap-y-5 gap-y-4 max-w-full w-full'>
-              <Input name='name' mailState={mailState} />
-              <Input name='email' mailState={mailState} />
-            </div>
-            <Input name='message' textarea mailState={mailState} />
+          <AnimatedToggable animation='fade' toggle={isShowingError} refresh={[errorMessage]}>
+            <span className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 text-red-400 text-lg [text-shadow:0_0_.5rem_black]'>
+              {errorMessage}
+            </span>
+          </AnimatedToggable>
+        </form>
+      </AnimatedToggable>
 
-            <button
-              className='bg-zinc-950 px-20 py-2 rounded-lg hover:brightness-150 active:scale-95 active:brightness-90 disabled:brightness-50 disabled:scale-100 transition mt-1 flex gap-2 items-center text-white'
-              disabled={mailState === 'sending'}
-            >
-              <span className='text-xl *:size-8'>
-                {mailState === 'initial' ? 'Send' : firstToUpper(mailState)}
-              </span>
-              {mailState !== 'initial' && icons[mailState]}
-            </button>
-
-            <AnimatedToggable animation='fade' toggle={isShowingError} refresh={[errorMessage]}>
-              <span className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-11 text-red-400 text-lg [text-shadow:0_0_.5rem_black]'>
-                {errorMessage}
-              </span>
-            </AnimatedToggable>
-          </form>
-        </AnimatedToggable>
-      </div>
-    </AnimatedToggable>
+      {/* Black background */}
+      <AnimatedToggable
+        animation='fade'
+        refresh={[isShowingError, errorMessage, mailState]}
+        toggle={isOpen}
+      >
+        <div
+          onPointerDown={handleClick}
+          className={`
+            fixed z-[9999] top-0 left-0
+            h-dvh w-screen bg-black/50 backdrop-blur-sm
+          `}
+        />
+      </AnimatedToggable>
+    </>
   )
 }
 
@@ -138,8 +159,9 @@ const Input = ({ name, textarea, mailState }: InputProps) => {
   }, [mailState])
 
   const className = `
-    bg-zinc-800 border border-zinc-700 rounded-[.3rem] outline-none px-2 py-1 text-gray-200 [color-scheme:dark] 
-    hover:brightness-110 focus:brightness-125 focus:outline-2 focus:outline-zinc-600 -outline-offset-1 transition w-full
+    bg-zinc-900 border border-zinc-700 rounded-[.3rem] outline-none px-2 py-1
+    text-gray-200 [color-scheme:dark] -outline-offset-1 transition w-full
+    hover:brightness-110 focus:brightness-125 focus:outline-2 focus:outline-zinc-600
   `
   const props = { value, onChange: handleChange, name }
 
