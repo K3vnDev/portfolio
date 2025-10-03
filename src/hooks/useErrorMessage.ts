@@ -17,5 +17,9 @@ export const useErrorMessage = (miliseconds: number) => {
   }
   useEffect(() => () => clearTimeout(timeoutRef.current), [])
 
-  return { isShowingError, setNewError, errorMessage }
+  const hideError = () => {
+    setIsShowingError(false)
+  }
+
+  return { isShowingError, setNewError, errorMessage, hideError }
 }

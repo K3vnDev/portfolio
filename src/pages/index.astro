@@ -1,12 +1,12 @@
 ---
 import { PROJECTS, SECTIONS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
-import { ContactForm } from '@components/ContactForm'
 import Footer from '@components/Footer.astro'
 import Navbar from '@components/Navbar.astro'
 import Section from '@components/Section.astro'
 import Socials from '@components/Socials.astro'
 import Title from '@components/Title.astro'
+import { ContactForm } from '@components/contact-form/ContactForm'
 import Project from '@components/project/Project.astro'
 ---
 
@@ -26,7 +26,8 @@ import Project from '@components/project/Project.astro'
       <h3
         class='text-2xl text-pretty sm:text-3xl font-normal text-white max-w-[730px] mt-4'
       >
-        <strong>Fullstack Developer</strong> building responsive, fast, and maintainable
+        <strong>Fullstack Developer</strong> with 2 years building responsive, fast,
+        and maintainable
         <strong>Web Applications</strong>.
       </h3>
       <Socials />
@@ -38,7 +39,7 @@ import Project from '@components/project/Project.astro'
       <div
         class={`
 					xl:grid [grid-template-columns:5fr_1fr_5fr] 
-					flex flex-col gap-9 items-start
+					flex flex-col gap-8 items-start
 				`}
       >
         {PROJECTS.map((proj, i) => <Project {...proj} index={i} />)}
@@ -56,10 +57,12 @@ import Project from '@components/project/Project.astro'
           projects from concept to production.
         </p>
         <p>
-          My work stands out for strong <strong>attention to detail</strong>. I
-          build responsive, fast, and scalable web applications that people
-          actually <strong>enjoy</strong> using, and I adapt easily to any part of
-          the stack to help ship clean, reliable products.
+          I specialize in building responsive, fast, and scalable web
+          applications that people <strong>enjoy</strong> using. Known for strong
+          <strong>attention to detail</strong> and <strong
+            >problem-solving</strong
+          >, I adapt quickly across the stack to deliver clean, reliable
+          products and innovative solutions.
         </p>
       </div>
     </Section>

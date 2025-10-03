@@ -9,6 +9,7 @@ export interface Project {
   name: string
   desc: string
   big: boolean
+  gif: boolean
   tecnologies: Tecnology[]
   code: string
   preview: string
