@@ -3,8 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
+      "@@/*": ["src/components/*"],
       "@icons": ["src/components/icons.tsx"],
+      "@types": ["src/types.d.ts"],
+      "@consts": ["src/consts.ts"],
       "@/*": ["src/*"]
     },
     "jsx": "react-jsx",

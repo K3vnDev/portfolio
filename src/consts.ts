@@ -1,5 +1,5 @@
-import * as Icons from '@/components/icons.tsx'
-import type { Project } from '@/types.d'
+import * as Icons from '@icons'
+import type { Project } from '@types'
 
 export const SOCIALS = [
   {
