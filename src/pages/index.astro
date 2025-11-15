@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro'
 import Section from '@@/HomeSection.astro'
 import Socials from '@@/Socials.astro'
 import Title from '@@/Title.astro'
-import { ContactForm } from '@@/contact-form/ContactForm'
 import { ArrowDiagonalIcon } from '@@/icons'
 import StarredProjects from '@@/starred-projects/StarredProjects.astro'
 import { SECTIONS } from '@consts'
@@ -70,13 +69,14 @@ import { SECTIONS } from '@consts'
 </Layout>
 
 <style is:global>
+  @import 'tailwindcss';
+
   #home h3 strong {
-    @apply bg-clip-text text-transparent font-extrabold 
-			bg-gradient-to-r from-[#8e63f3] to-[#5d6bff];
+    @apply bg-clip-text text-transparent font-extrabold bg-linear-to-r from-[#8e63f3] to-[#5d6bff];
   }
   #about p {
     strong {
-      @apply bg-clip-text text-transparent bg-gradient-to-l from-[#9998fd] to-[#b09eec] font-semibold;
+      @apply bg-clip-text text-transparent bg-linear-to-l from-[#9998fd] to-[#b09eec] font-semibold;
     }
     a {
       @apply text-white hover:underline;

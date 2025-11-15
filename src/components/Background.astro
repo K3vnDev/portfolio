@@ -3,14 +3,12 @@
   class={`
 		fixed top-0 left-0 -z-50 h-screen w-full bg-[rgb(6_6_11)]
 		bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
+
+    [&>div]:fixed
+    [&>div]:rounded-full
+    [&>div]:blur-3xl
 	`}
 >
-  <div class='bg-violet-700/[.1] left-[12vw] top-[21vh] size-[32vw]'></div>
-  <div class='bg-indigo-600/[.16] right-[19vw] top-[7vh] size-[29vw]'></div>
+  <div class='bg-violet-700/10 left-[12vw] top-[21vh] size-[32vw]'></div>
+  <div class='bg-indigo-600/16 right-[19vw] top-[7vh] size-[29vw]'></div>
 </div>
-
-<style is:global>
-  #app-background div {
-    @apply fixed rounded-full blur-3xl;
-  }
-</style>

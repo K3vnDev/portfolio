@@ -27,7 +27,7 @@ const { title } = Astro.props
     <AppNavigationBar />
 
     <main
-      class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl w-full sm:mx-10 mx-7'
+      class='flex flex-col md:gap-52 gap-40 xl:max-w-300 max-w-4xl w-full sm:mx-10 mx-7'
     >
       <slot />
       <AppFooter />
@@ -39,6 +39,7 @@ const { title } = Astro.props
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+  @import 'tailwindcss';
 
   * {
     font-family:
@@ -56,10 +57,8 @@ const { title } = Astro.props
       sans-serif;
   }
 
-  :root {
-    --proj-p: 10px;
-    --link-btn-bg: rgb(10, 10, 10);
-    --gradient: linear-gradient(#700aff, #2e0bdc, #6f00ff, #700aff);
+  @theme {
+    --color-link-btn-bg: rgb(10, 10, 10);
   }
 
   html {

@@ -19,12 +19,12 @@ const { name, desc, tecnologies, code, preview, starredImgs } = Astro.props
   class=`
     border-[#555]/50 relative overflow-hidden flex md:flex-row-reverse flex-col-reverse 
     xl:rounded-xl rounded-2xl md:p-3 md:gap-8 gap-4 hover:brightness-110 transition group
-    md:bg-white/[.045] md:border-2 xl:flex-row xl:p-12 xl:min-h-[19.375rem] xl:gap-0
+    md:bg-white/4.5 md:border-2 xl:flex-row xl:p-12 xl:min-h-77.5 xl:gap-0
 
-    [&:nth-child(1)]:col-span-2 [&:nth-child(2)]:col-span-2
+    nth-1:col-span-2 nth-2:col-span-2
 
-    [&:nth-child(1)]:xl:order-1 [&:nth-child(2)]:xl:order-4
-    [&:nth-child(3)]:xl:order-2 [&:nth-child(4)]:xl:order-3
+    nth-1:xl:order-1 nth-2:xl:order-4
+    nth-3:xl:order-2 nth-4:xl:order-3
   `
 >
   <div
@@ -36,7 +36,7 @@ const { name, desc, tecnologies, code, preview, starredImgs } = Astro.props
   >
     <section class=`flex flex-col md:gap-3 gap-2 xl:gap-2`>
       <div class=`flex md:flex-col md:gap-3 gap-x-4 gap-y-2 flex-wrap xl:gap-2`>
-        <span class='[font-size:1.625rem] font-bold text-white text-nowrap'>
+        <span class='text-[1.625rem] font-bold text-white text-nowrap'>
           {name}
         </span>
         <ul class='flex gap-1 flex-nowrap items-center'>
