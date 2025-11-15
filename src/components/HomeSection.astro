@@ -8,9 +8,6 @@ const propClass = Astro.props.class ?? ''
 const id = Astro.props.id ?? ''
 ---
 
-<section
-  class={`flex flex-col ${propClass}`}
-  id={id}
->
+<section class={`flex flex-col ${propClass}`} id={id}>
   <slot />
 </section>

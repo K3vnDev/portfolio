@@ -5,15 +5,9 @@ const { label, icon: Icon } = Astro.props
 <li
   class=`
     flex gap-1 items-center bg-black rounded-full px-2 py-1 h-fit 
-    border border-[#333] 
+    border border-[#333] [&>svg]:size-3.5
   `
 >
   <Icon />
   <span class='text-white text-xs'>{label}</span>
 </li>
-
-<style>
-  svg {
-    @apply size-3.5;
-  }
-</style>

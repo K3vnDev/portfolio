@@ -1,77 +1,72 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import Footer from '@@/Footer.astro'
-import Navbar from '@@/Navbar.astro'
-import Section from '@@/Section.astro'
+import Section from '@@/HomeSection.astro'
 import Socials from '@@/Socials.astro'
 import Title from '@@/Title.astro'
 import { ContactForm } from '@@/contact-form/ContactForm'
-import Project from '@@/project/Project.astro'
-import { PROJECTS, SECTIONS } from '@consts'
+import { ArrowDiagonalIcon } from '@@/icons'
+import StarredProjects from '@@/starred-projects/StarredProjects.astro'
+import { SECTIONS } from '@consts'
 ---
 
-<Layout title="Kevin's Portfolio | Fullstack Developer">
-  <main
-    class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl w-full sm:mx-10 mx-7 xl:mt-72 sm:mt-48 mt-40'
-  >
-    <Navbar />
+<Layout title="Kevin's Portfolio — Fullstack Developer">
+  <Section id='home' class='xl:mt-72 sm:mt-48 mt-40'>
+    <h2
+      class='text-white text-6xl md:text-8xl sm:text-7xl font-bold text-nowrap flex flex-wrap gap-3 sm:mb-0 mb-1'
+    >
+      <span>Hi,</span>
+      <span>I’m Kevin</span>
+    </h2>
+    <h3
+      class='text-2xl text-pretty sm:text-3xl font-normal text-white max-w-[730px] mt-4'
+    >
+      <strong>Fullstack Developer</strong> with 2 years building responsive, fast,
+      and maintainable
+      <strong>Web Applications</strong>.
+    </h3>
 
-    <Section id='home'>
-      <h2
-        class='text-white text-6xl md:text-8xl sm:text-7xl font-bold text-nowrap flex flex-wrap gap-3 sm:mb-0 mb-1'
-      >
-        <span>Hi,</span>
-        <span>I’m Kevin</span>
-      </h2>
-      <h3
-        class='text-2xl text-pretty sm:text-3xl font-normal text-white max-w-[730px] mt-4'
-      >
-        <strong>Fullstack Developer</strong> with 2 years building responsive, fast,
-        and maintainable
-        <strong>Web Applications</strong>.
-      </h3>
+    <Socials />
+  </Section>
 
-      <Socials />
-    </Section>
-
-    <Section class='gap-8' id='projects'>
+  <Section class='gap-8' id='projects'>
+    <div class='flex flex-col gap-2 text-nowrap'>
       <Title {...SECTIONS.PROJECTS} />
-
-      <div
-        class={`
-					xl:grid [grid-template-columns:5fr_1fr_5fr] 
-					flex flex-col gap-8 items-start
-				`}
+      <span
+        class='text-white/75 font-light text-lg flex items-center gap-1.5 flex-wrap'
       >
-        {PROJECTS.map((proj, i) => <Project {...proj} index={i} />)}
-      </div>
-    </Section>
+        Click on a project to know more or
+        <a
+          class='flex items-center gap-1 text-white font-normal hover:underline'
+          href='/projects'
+        >
+          explore all my projects
+          <ArrowDiagonalIcon className='size-4 stroke-[3px]' />
+        </a>
+      </span>
+    </div>
 
-    <Section class='gap-6' id='about'>
-      <Title {...SECTIONS.ABOUT} />
-      <div
-        class='text-xl font-light text-gray-200 flex flex-col gap-5 text-pretty max-w-4xl'
-      >
-        <p>
-          I'm Kevin Rodriguez, a final-year engineering student and
-          <strong>Fullstack Developer</strong> with 2 years of experience shipping
-          projects from concept to production.
-        </p>
-        <p>
-          I specialize in building responsive, fast, and scalable web
-          applications that people <strong>enjoy</strong> using. Known for strong
-          <strong>attention to detail</strong> and <strong
-            >problem-solving</strong
-          >, I adapt quickly across the stack to deliver clean, reliable
-          products and innovative solutions.
-        </p>
-      </div>
-    </Section>
+    <StarredProjects />
+  </Section>
 
-    <Footer />
-
-    <ContactForm client:idle />
-  </main>
+  <Section class='gap-6' id='about'>
+    <Title {...SECTIONS.ABOUT} />
+    <div
+      class='text-xl font-light text-gray-200 flex flex-col gap-5 text-pretty max-w-4xl'
+    >
+      <p>
+        I'm Kevin Rodriguez, a final-year engineering student and
+        <strong>Fullstack Developer</strong> with 2 years of experience shipping
+        projects from concept to production.
+      </p>
+      <p>
+        I specialize in building responsive, fast, and scalable web applications
+        that people <strong>enjoy</strong> using. Known for strong
+        <strong>attention to detail</strong> and <strong>problem-solving</strong
+        >, I adapt quickly across the stack to deliver clean, reliable products
+        and innovative solutions.
+      </p>
+    </div>
+  </Section>
 </Layout>
 
 <style is:global>
@@ -85,23 +80,6 @@ import { PROJECTS, SECTIONS } from '@consts'
     }
     a {
       @apply text-white hover:underline;
-    }
-  }
-
-  @media (max-width: 1279px) {
-    #project {
-      &:nth-child(1) {
-        order: 1;
-      }
-      &:nth-child(2) {
-        order: 3;
-      }
-      &:nth-child(3) {
-        order: 4;
-      }
-      &:nth-child(4) {
-        order: 2;
-      }
     }
   }
 </style>

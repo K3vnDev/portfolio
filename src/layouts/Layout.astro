@@ -1,4 +1,6 @@
 ---
+import AppFooter from '@@/AppFooter.astro'
+import AppNavigationBar from '@@/AppNavigationBar.astro'
 import Background from '@@/Background.astro'
 
 interface Props {
@@ -22,7 +24,15 @@ const { title } = Astro.props
     <title>{title}</title>
   </head>
   <body class='bg-[#151515] overflow-x-hidden flex justify-center'>
-    <slot />
+    <AppNavigationBar />
+
+    <main
+      class='flex flex-col md:gap-52 gap-40 xl:max-w-[75rem] max-w-4xl w-full sm:mx-10 mx-7'
+    >
+      <slot />
+      <AppFooter />
+    </main>
+
     <Background />
   </body>
 </html>

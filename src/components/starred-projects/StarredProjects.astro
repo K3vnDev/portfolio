@@ -1,0 +1,13 @@
+---
+import { PROJECTS } from '@consts'
+import ProjectTile from './ProjectTile.astro'
+---
+
+<div
+  class={`
+    xl:grid [grid-template-columns:5fr_1fr_5fr]
+    flex flex-col xl:gap-8 md:gap-5 gap-10 items-start
+  `}
+>
+  {PROJECTS.slice(0, 4).map((proj, i) => <ProjectTile {...proj} index={i} />)}
+</div>
