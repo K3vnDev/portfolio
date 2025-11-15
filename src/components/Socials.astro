@@ -3,16 +3,18 @@ import { SOCIALS } from '@/consts'
 import Link from './Link.astro'
 ---
 
-<div class='flex flex-wrap gap-3 md:gap-4 mt-5 md:mt-4'>
+<div class='flex flex-wrap gap-2 md:gap-3 mt-7 md:mt-4'>
   {
-    SOCIALS.map(({ label, link, icon: Icon }) => (
+    SOCIALS.map(({ label, link, icon: Icon }, i) => (
       <Link
         name={label}
         href={link}
-        class='gap-3 sm:px-8 px-6 py-2 rounded-full'
+        class='gap-2 sm:px-6 px-5 py-1.5 rounded-full'
       >
-        <Icon className='size-8' />
-        <span class='text-2xl md:block hidden font-semibold'>{label}</span>
+        <Icon className='size-6' />
+        <span class={`text-xl font-semibold ${i ? 'hidden md:block' : ''}`}>
+          {label}
+        </span>
       </Link>
     ))
   }
