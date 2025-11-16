@@ -1,0 +1,24 @@
+---
+import { GithubIcon, PreviewIcon } from '@@/icons'
+import { twMerge } from 'tailwind-merge'
+import Button from './Button.astro'
+
+interface Props {
+  code: string
+  preview: string
+  name: string
+  class?: string
+}
+
+const { code, preview, name, class: className } = Astro.props
+---
+
+<section class={twMerge(`flex gap-2 ${className}`)}>
+  <Button href={code} projectName={name} label='Code' icon={GithubIcon} />
+  <Button
+    href={preview}
+    projectName={name}
+    label='Preview'
+    icon={PreviewIcon}
+  />
+</section>

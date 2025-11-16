@@ -10,7 +10,7 @@ export interface Project {
   desc: string
   starredImgs?: string[]
   defaultImgs?: string[]
-  tecnologies: Tecnology[]
+  technologies: Tecnology[]
   code: string
   preview: string
 }

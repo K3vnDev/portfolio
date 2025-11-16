@@ -1,0 +1,43 @@
+---
+import Technologies from '@@/projects/Technologies.astro'
+import type { Project } from '@types'
+import { twMerge } from 'tailwind-merge'
+import CodeAndPreviewButtons from '../CodeAndPreviewButtons.astro'
+
+interface Props {
+  projects: Project[]
+  class?: string
+}
+
+const { projects, class: className } = Astro.props
+---
+
+<div class={twMerge(`flex flex-col w-full gap-8 ${className}`)}>
+  {
+    projects.map(({ code, preview, name, desc, technologies, starredImgs }) => (
+      <article class='flex flex-col bg-proj-card-bg border-proj-card-border border-2 rounded-xl overflow-clip group'>
+        <div class='sm:h-50 h-40 w-full relative'>
+          <img
+            src={starredImgs ? starredImgs[starredImgs.length - 1] : ''}
+            alt={name}
+            class='w-full group-hover:w-[110%] h-[140%] object-cover object-center absolute top-0 left-0 -z-10'
+          />
+        </div>
+
+        <div class='flex flex-col p-8 gap-2'>
+          <h2 class='text-white font-bold text-2xl mb-2'>{name}</h2>
+          <Technologies technologies={technologies} />
+          <p class='text-zinc-300'>{desc}</p>
+
+          <CodeAndPreviewButtons {...{ code, preview, name }} class='mt-4' />
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  img {
+    mask-image: linear-gradient(to bottom, black 50%, transparent);
+  }
+</style>

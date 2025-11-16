@@ -1,9 +1,22 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import PageSection from '@@/PageSection.astro'
+import Title from '@@/Title.astro'
+import { CodeIcon } from '@@/icons'
+import ExploreProjects from '@@/projects/explore-projects/ExploreProjects.astro'
 ---
 
 <Layout title="Explore Projects — Kevin's Portfolio">
-  <main class='text-white font-bold text-2xl'>
-    Welcome to the projects page! Here you can explore all of my work in detail.
-  </main>
+  <PageSection class='gap-12 pb-20'>
+    <div class='flex flex-col gap-3 text-nowrap mt-(--page-mt)'>
+      <Title label='Starred projects' icon={CodeIcon} />
+      <span
+        class='text-white/75 font-light text-lg flex items-center gap-1.5 flex-wrap'
+      >
+        Click on a project to know more.
+      </span>
+    </div>
+
+    <ExploreProjects />
+  </PageSection>
 </Layout>

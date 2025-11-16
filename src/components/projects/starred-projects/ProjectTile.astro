@@ -1,15 +1,17 @@
 ---
 import { GithubIcon, PreviewIcon } from '@icons'
 import type { Project } from '@types'
-import Button from './Button.astro'
-import TechnologyBadge from './TechnologyBadge.astro'
+import Button from '../Button.astro'
+import CodeAndPreviewButtons from '../CodeAndPreviewButtons.astro'
+import Technologies from '../Technologies.astro'
 import Images from './images/Images.astro'
 
 type Props = Project & {
   index: number
 }
 
-const { name, desc, tecnologies, code, preview, starredImgs } = Astro.props
+const { name, desc, technologies, code, preview, starredImgs } =
+  Astro.props as Props
 ---
 
 <article
@@ -17,9 +19,9 @@ const { name, desc, tecnologies, code, preview, starredImgs } = Astro.props
   tabindex='0'
   role='link'
   class=`
-    border-[#555]/50 relative overflow-hidden flex md:flex-row-reverse flex-col-reverse 
+    border-proj-card-border relative overflow-hidden flex md:flex-row-reverse flex-col-reverse 
     xl:rounded-xl rounded-2xl md:p-3 md:gap-8 gap-4 hover:brightness-110 transition group
-    md:bg-white/4.5 md:border-2 xl:flex-row xl:p-12 xl:min-h-77.5 xl:gap-0
+    md:bg-proj-card-bg md:border-2 xl:flex-row xl:p-12 xl:min-h-77.5 xl:gap-0
 
     nth-1:col-span-2 nth-2:col-span-2
 
@@ -39,24 +41,15 @@ const { name, desc, tecnologies, code, preview, starredImgs } = Astro.props
         <span class='text-[1.625rem] font-bold text-white text-nowrap'>
           {name}
         </span>
-        <ul class='flex gap-1 flex-nowrap items-center'>
-          {tecnologies.map((tecnology) => <TechnologyBadge {...tecnology} />)}
-        </ul>
+
+        <Technologies {...{ technologies }} />
       </div>
       <p class='text-sm text-pretty font-normal text-gray-300 max-w-lg'>
         {desc}
       </p>
     </section>
 
-    <section class='flex gap-2'>
-      <Button href={code} projectName={name} label='Code' icon={GithubIcon} />
-      <Button
-        href={preview}
-        projectName={name}
-        label='Preview'
-        icon={PreviewIcon}
-      />
-    </section>
+    <CodeAndPreviewButtons {...{ code, preview, name }} />
   </div>
 
   {starredImgs && <Images {...{ name, starredImgs }} projectUrl={preview} />}

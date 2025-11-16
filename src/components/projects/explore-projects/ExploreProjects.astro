@@ -1,0 +1,19 @@
+---
+import { PROJECTS } from '@consts'
+import type { Project } from '@types'
+import ProjectsColumn from './ProjectsColumn.astro'
+
+// Distribute projects into two columns for layout purposes
+const projectColumns: Project[][] = [[], []]
+for (let i = 0; i < PROJECTS.length; i++) {
+  const columnIndex = i % 2
+  projectColumns[columnIndex].push(PROJECTS[i])
+}
+---
+
+<div class='w-full gap-8 md:flex hidden'>
+  <ProjectsColumn projects={projectColumns[0]} />
+  <ProjectsColumn projects={projectColumns[1]} class='translate-y-32' />
+</div>
+
+<ProjectsColumn projects={PROJECTS} class='md:hidden' />

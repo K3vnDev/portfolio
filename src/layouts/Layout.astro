@@ -27,7 +27,7 @@ const { title } = Astro.props
     <AppNavigationBar />
 
     <main
-      class='flex flex-col md:gap-52 gap-40 xl:max-w-300 max-w-4xl w-full sm:mx-10 mx-7'
+      class='flex flex-col md:gap-52 gap-40 xl:max-w-300 max-w-4xl sm:max-w-[calc(100%-4rem)] max-w-[calc(100%-2rem)] w-full'
     >
       <slot />
       <AppFooter />
@@ -59,6 +59,12 @@ const { title } = Astro.props
 
   @theme {
     --color-link-btn-bg: rgb(10, 10, 10);
+    --color-proj-card-border: rgba(85, 85, 85, 0.5);
+    --color-proj-card-bg: rgba(255, 255, 255, 0.045);
+  }
+
+  :root {
+    --page-mt: 11rem;
   }
 
   html {

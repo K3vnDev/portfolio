@@ -1,0 +1,13 @@
+---
+import type { Tecnology } from '@types'
+import TechnologyBadge from './TechnologyBadge.astro'
+interface Props {
+  technologies: Tecnology[]
+}
+
+const { technologies } = Astro.props as Props
+---
+
+<ul class='flex gap-1 flex-nowrap items-center'>
+  {technologies.map((tech) => <TechnologyBadge {...tech} />)}
+</ul>
